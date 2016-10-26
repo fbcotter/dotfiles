@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+PATH="/usr/local/bin:$PATH"
+# Get the .git folder
+dir="`git rev-parse --git-dir`"
+# on the exit of this function, delete the PID.tags file
+trap 'rm -f "$dir/$$.tags"' EXIT
+# List all git files, and pipe into ctags. the -L - option 
+# takes from stdin, so this will read in the output of git ls-files.
+git ls-files | \
+    ctags --tag-relative -L - -f "$dir/$$.tags" --languages=-javascript,sql
+mv "$dir/$$.tags" "$dir/tags"

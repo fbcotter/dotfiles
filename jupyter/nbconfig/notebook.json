@@ -1,0 +1,15 @@
+{
+  "load_extensions": {
+    "help_panel/help_panel": false,
+    "notify/notify": true,
+    "code_prettify/code_prettify": true,
+    "scratchpad/main": true,
+    "equation-numbering/main": true,
+    "highlighter/highlighter": true,
+    "collapsible_headings/main": true,
+    "nbextensions_configurator/config_menu/main": true,
+    "ruler/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "vim_binding/vim_binding": true
+  }
+}

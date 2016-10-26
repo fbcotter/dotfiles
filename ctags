@@ -1,0 +1,14 @@
+--exclude=*.min.js
+--exclude=*.min.css
+--exclude=*.map
+--exclude=.backup
+--exclude=.sass-cache
+--exclude=vendors
+--exclude=.git
+
+
+--python-kinds=-i
+--langdef=js
+--langmap=js:.js
+
+

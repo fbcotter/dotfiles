@@ -1,0 +1,15 @@
+Host yoshi
+    HostName yoshi.eng.cam.ac.uk
+    User fbc23
+
+Host azure
+    HostName azurevm.uksouth.cloudapp.azure.com
+    User fbc23
+    LocalForward 3389 localhost:3389
+    LocalForward 3390 localhost:3390
+    LocalForward 5900 localhost:5900
+    LocalForward 5901 localhost:5901
+    LocalForward 18888 localhost:8888
+    LocalForward 18889 localhost:8889
+    LocalForward 16006 localhost:6006
+    LocalForward 16007 localhost:6007
