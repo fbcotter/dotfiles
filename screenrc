@@ -8,3 +8,7 @@ defscrollback 32000
 defutf8 on
 
 altscreen on
+
+# Run as login shell
+shell -$SHELL
+
