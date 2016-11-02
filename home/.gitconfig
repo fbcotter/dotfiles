@@ -75,6 +75,7 @@
 			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
 		fi \
 	}; f"
+	ctags = !.git/hooks/ctags
 
 [apply]
 
@@ -128,7 +129,7 @@
 [commit]
 
 	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = true
+	gpgsign = false
 
 [diff]
 
@@ -180,3 +181,9 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[user]
+	email = fbcotter90@gmail.com
+	name = Fergal Cotter
+	signingkey = 3F4F1C11
+[init]
+	templatedir = /home/fbc23/dotfiles/git_template
