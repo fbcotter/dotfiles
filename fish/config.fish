@@ -24,6 +24,11 @@ else
     fish_vi_key_bindings
 end
 
+# Some constant aliases/environment variables
+set -x EDITOR vim
+alias gitlog "git log --graph --decorate --oneline"
+
+# Import some machine specific aliases and environment variables
 if [ (hostname) = "hazza" ]
     if test -f $HOME/repos/fbcotter/dotfiles/fish/alias_vars_hazza.fish
         source $HOME/repos/fbcotter/dotfiles/fish/alias_vars_hazza.fish
