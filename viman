@@ -1,0 +1,3 @@
+#!/bin/sh
+# Script should be moved to /usr/bin/viman and given execute permissions
+vim -c "Man $1 $2" -c 'silent only'

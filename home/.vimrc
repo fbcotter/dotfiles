@@ -14,7 +14,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'wincent/Command-T'
-" Plugin 'lervag/vimtex' 
+Plugin 'lervag/vimtex' 
+Plugin 'vim-utils/vim-man'
 "Plugin 'gerw/vim-latex-suite'
 "Plugin 'vim-latex/vim-latex'
 "Plugin 'jcf/vim-latex.git'
@@ -28,6 +29,11 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " Final line of plugins
 call vundle#end()
+
+" Disable vimtex for normal vim (enable it in gvimrc)
+let g:vimtex_enabled=0
+" Set vim man width to 80
+let g:man_width = 80
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -48,10 +54,6 @@ behave mswin
 
 " TODO: Pick a leader key
 " let mapleader = ","
-
-" Set the location of the default tags file
-set autochdir
-set tags=.git/tags
 
 set enc=utf-8
 set fileencoding=utf-8
