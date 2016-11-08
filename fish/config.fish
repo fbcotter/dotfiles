@@ -27,6 +27,7 @@ end
 # Some constant aliases/environment variables
 set -x EDITOR vim
 alias gitlog "git log --graph --decorate --oneline"
+alias latexmk "latexmk -pdf -pvc"
 source $HOME/repos/fbcotter/dotfiles/fish/less_colours.fish
 
 # Import some machine specific aliases and environment variables
