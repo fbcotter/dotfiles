@@ -1,5 +1,5 @@
 #!/bin/bash
-MYDIR=$(pwd)
+MYDIR=$( cd $(dirname $0) ; pwd -P )
 FISHDIR="$HOME/.config/fish"
 
 # function makesymlink 

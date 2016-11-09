@@ -18,7 +18,9 @@ set -g theme_display_user yes
 set -g theme_hide_hostname no
 
 # Turn on vim bindings
-if fish -v | grep 2.[0-2] > /dev/null 
+# fish -v outputted to stderr on some of my machines??
+# Hence the 2>&1
+if fish -v 2>&1 | grep 2.[0-2] > /dev/null 
     fish_vi_mode
 else
     fish_vi_key_bindings
