@@ -19,6 +19,7 @@ function makesymlink {
 }
 
 # Make a link to the config.fish file
+echo "Symlinking config.fish to fish"
 makesymlink $MYDIR/config.fish $FISHDIR/config.fish
 
 # Make a link to the alias and environment variables file
@@ -38,12 +39,14 @@ case $HOSTNAME in
 esac
 
 # Make a link to the less colours file
+echo "Symlinking less_colours.fish to fish"
 makesymlink $MYDIR/less_colours.fish $FISHDIR/less_colours.fish
 
 # Make a link to each of the functions in the functions directory
 FILES=$MYDIR/functions/*.fish
 for f in $FILES 
 do
-    makesymlink $f $FISHDIR/$(basename $f)
+    echo "Symlinking $(basename $f) to fish"
+    makesymlink $f $FISHDIR/functions/$(basename $f)
 done
 
