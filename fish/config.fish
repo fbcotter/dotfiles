@@ -1,3 +1,8 @@
+# Non-interactive users (sshy, sync)
+if not status --is-interactive
+    exit # Skips the rest of this file, not exiting the shell
+end
+
 # Install Fundle Package manager
 if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
 
@@ -42,6 +47,7 @@ alias gitlog "git log --graph --decorate --oneline"
 alias latexmk "latexmk -pdf -pvc"
 source $HOME/.config/fish/less_colours.fish
 source $HOME/.config/fish/alias_vars.fish
+set -gx TERM xterm-256color
 
 # Some simple functions
 function glen 
