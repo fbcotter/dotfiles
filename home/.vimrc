@@ -16,6 +16,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'wincent/Command-T'
 Plugin 'lervag/vimtex' 
 Plugin 'vim-utils/vim-man'
+Plugin 'tpope/vim-fugitive'
 "Plugin 'gerw/vim-latex-suite'
 "Plugin 'vim-latex/vim-latex'
 "Plugin 'jcf/vim-latex.git'
@@ -75,6 +76,8 @@ set fileencodings=ucs-bom,utf8,prc
 " set grepprg=grep\ -nH\ $*
 
 " let g:tex_flavor='latex'
+hi clear texItalStyle
+hi clear texBoldStyle
 
 """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
 "let g:statline_syntastic = 0
