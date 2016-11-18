@@ -1,0 +1,87 @@
+# Description:  This file holds all my BASH configurations and aliases
+#
+#  Sections:
+#  1.   Environment Configuration
+#  2.   Make Terminal Better (remapping defaults and adding functionality)
+#  3.   File and Folder Management
+#  4.   Searching
+#  5.   Process Management
+#  6.   Networking
+#  7.   System Operations & Information
+#  8.   Web Development
+#  9.   Reminders & Notes
+#
+#  ---------------------------------------------------------------------------
+
+#   -------------------------------
+#   1.  ENVIRONMENT CONFIGURATION
+
+#   Load the bashrc file
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra,bash_host_alias}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+#   Start the ssh-agent
+eval $(ssh-agent -s)  # Start the ssh-agent
+
+#   Set some tab completion
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+    shopt -s "$option" 2> /dev/null;
+done;
+
+# Add tab completion for many Bash commands
+if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+    source "$(brew --prefix)/share/bash-completion/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion;
+fi;
+
+# Enable tab completion for `g` by marking it as an alias for `git`
+if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    complete -o default -o nospace -F _git g;
+fi;
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+# Add tab completion for `defaults read|write NSGlobalDomain`
+# You could just use `-g` instead, but I like being explicit
+complete -W "NSGlobalDomain" defaults;
+
+#   Set Default Editor 
+#   ------------------------------------------------------------
+export EDITOR=/usr/bin/vim
+
+#   Set default blocksize for ls, df, du
+#   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
+#   ------------------------------------------------------------
+export BLOCKSIZE=1k
+
+#   Add color to terminal
+#   (this is all commented out as I use Mac Terminal Profiles)
+#   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
+#   ------------------------------------------------------------
+export CLICOLOR=1
+#export LSCOLORS=ExFxBxDxCxegedabagacad
+eval $(dircolors ~/.dircolors)
+
