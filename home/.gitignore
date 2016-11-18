@@ -64,4 +64,7 @@ Thumbs.db
 .Trashes
 
 # iPython Notebook checkpoints
-.ipynb_checkpoints/*
+.ipynb_checkpoints/
+
+# Log Directories from Tensorboard
+logdir/
