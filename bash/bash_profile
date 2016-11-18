@@ -72,6 +72,10 @@ complete -W "NSGlobalDomain" defaults;
 #   ------------------------------------------------------------
 export EDITOR=/usr/bin/vim
 
+#   Use Vi Key Bindings
+#   ------------------------------------------------------------
+set -o vi
+
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 #   ------------------------------------------------------------
