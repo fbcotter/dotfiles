@@ -114,7 +114,7 @@ let g:NERDCommentEmptyLines = 1
 
 """"""""""""""""""""" Some Nerdtree settings"""""""""""""""""""""""""""""
 " Ensure that vim opens up in the opened file's directory
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
 " Automatically start nerdtree on opening vim
 autocmd vimenter * NERDTree
 autocmd vimenter * wincmd p
