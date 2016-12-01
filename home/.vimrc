@@ -17,6 +17,7 @@ Plugin 'wincent/Command-T'
 Plugin 'lervag/vimtex' 
 Plugin 'vim-utils/vim-man'
 Plugin 'tpope/vim-fugitive'
+Plugin 'chrisbra/Recover.vim'
 "Plugin 'gerw/vim-latex-suite'
 "Plugin 'vim-latex/vim-latex'
 "Plugin 'jcf/vim-latex.git'
@@ -113,7 +114,7 @@ let g:NERDCommentEmptyLines = 1
 
 """"""""""""""""""""" Some Nerdtree settings"""""""""""""""""""""""""""""
 " Ensure that vim opens up in the opened file's directory
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
 " Automatically start nerdtree on opening vim
 autocmd vimenter * NERDTree
 autocmd vimenter * wincmd p

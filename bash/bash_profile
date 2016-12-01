@@ -30,7 +30,7 @@ done;
 unset file;
 
 #   Start the ssh-agent
-eval $(ssh-agent -s)  # Start the ssh-agent
+# eval $(ssh-agent -s)  # Start the ssh-agent
 
 #   Set some tab completion
 # Case-insensitive globbing (used in pathname expansion)
@@ -68,7 +68,7 @@ fi;
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults;
 
-#   Set Default Editor 
+#   Set some defaults
 #   ------------------------------------------------------------
 export EDITOR=/usr/bin/vim
 

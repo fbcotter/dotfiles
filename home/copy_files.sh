@@ -18,13 +18,20 @@ function makesymlink {
     ln -s $1 $2
 }
 
-for file in .{ctags,functions,gitconfig,gitignore,gvimrc,inputrc,latexmkrc,screenrc,vimrc,wgetrc};
+for file in .{ctags,functions,gitconfig,gitignore,gvimrc,inputrc,latexmkrc,screenrc,vimrc,wgetrc,gitattributes}
 do
     [ -r "$MYDIR/$file" ] && [ -f "$MYDIR/$file" ] && \
         echo "Symlinking $file" && \
         makesymlink $MYDIR/$file $HOME/$file;
 done;
 unset file;
+
+# Copy matplotlibrc file
+if [ ! -d "$HOME/.config/matplotlib" ]; then
+    mkdir -p "$HOME/.config/matplotlib"
+fi
+echo "Symlinking matplotlibrc" 
+makesymlink $MYDIR/matplotlibrc $HOME/.config/matplotlib/matplotlibrc
 
 # Make a link to the alias and environment variables file
 case $HOSTNAME in

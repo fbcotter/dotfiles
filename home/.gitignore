@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 
+# Numpy files
+*.np[yz]
+
 # C extensions
 *.so
 
@@ -67,3 +70,5 @@ Thumbs.db
 .ipynb_checkpoints/*
 # I often make virtual environments in repos
 venv/
+# Log Directories from Tensorboard
+logdir/

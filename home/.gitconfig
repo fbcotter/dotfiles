@@ -100,6 +100,7 @@
 	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
+	attibutesfile = /home/zelda/fbc23/.gitattributes
 
 [color]
 
@@ -186,4 +187,7 @@
 	name = Fergal Cotter
 	signingkey = 3F4F1C11
 [init]
-	templatedir = /home/fbc23/dotfiles/git_template
+	templatedir = ~/repos/fbcotter/dotfiles/git_template
+[filter "dropoutput_ipynb"]
+	clean = ~/repos/toobaz/ipynb_output_filter/ipynb_output_filter.py
+	smudge = cat

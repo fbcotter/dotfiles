@@ -10,5 +10,5 @@ defutf8 on
 altscreen on
 
 # Run as login shell
-shell -$SHELL
+shell -"/usr/bin/fish"
 
