@@ -26,6 +26,13 @@ do
 done;
 unset file;
 
+# Copy matplotlibrc file
+if [ ! -d "$HOME/.config/matplotlib" ]; then
+    mkdir -p "$HOME/.config/matplotlib"
+fi
+echo "Symlinking matplotlibrc" 
+makesymlink $MYDIR/matplotlibrc $HOME/.config/matplotlib/matplotlibrc
+
 # Make a link to the alias and environment variables file
 case $HOSTNAME in
     (yoshi) 
