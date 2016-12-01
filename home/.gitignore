@@ -67,7 +67,7 @@ Thumbs.db
 .Trashes
 
 # iPython Notebook checkpoints
-.ipynb_checkpoints/*
+.ipynb_checkpoints/
 # I often make virtual environments in repos
 venv/
 # Log Directories from Tensorboard
