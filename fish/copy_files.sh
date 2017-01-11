@@ -20,6 +20,7 @@ function makesymlink {
 
 # Make a link to the config.fish file
 echo "Symlinking config.fish to fish"
+mkdir -p ~/.config/fish/functions
 makesymlink $MYDIR/config.fish $FISHDIR/config.fish
 
 # Make a link to the alias and environment variables file
@@ -27,6 +28,9 @@ case $HOSTNAME in
     (yoshi) 
         echo "Host detected as yoshi. Copying the yoshi aliases file"
         makesymlink $MYDIR/alias_vars_yoshi.fish $FISHDIR/alias_vars.fish;;
+    (mario) 
+        echo "Host detected as mario. Copying the mario aliases file"
+        makesymlink $MYDIR/alias_vars_mario.fish $FISHDIR/alias_vars.fish;;
     (Glen) 
         echo "Host detected as Glen. Copying the Glen aliases file"
         makesymlink $MYDIR/alias_vars_glen.fish $FISHDIR/alias_vars.fish;;
