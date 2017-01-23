@@ -10,16 +10,20 @@ HOSTNAME=$(hostname)
 case $HOSTNAME in
     (yoshi) 
         echo "Host detected as yoshi. Creating the yoshi repo list"
-        find $DIR2 -depth 2 -type d | sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
+        find $DIR2 -maxdepth 2 -mindepth 2 -type d | \
+            sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
     (luigi) 
         echo "Host detected as luigi. Creating the luigi repo list"
-        find $DIR2 -depth 2 -type d | sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
+        find $DIR2 -maxdepth 2 -mindepth 2 -type d | \
+            sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
     (Glen) 
         echo "Host detected as Glen. Creating the Glen repo list"
-        find $DIR2 -depth 2 -type d | sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
+        find $DIR2 -maxdepth 2 -mindepth 2 -type d | \
+            sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
     (hazza) 
         echo "Host detected as hazza. Creating the hazza repo list"
-        find $DIR2 -depth 2 -type d | sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
+        find $DIR2 -maxdepth 2 -mindepth 2 -type d | \
+            sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
     (*) 
         echo "Warning - Unkown Hostname."  
 esac

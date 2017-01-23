@@ -1,0 +1,4 @@
+tensorflow/models
+tensorflow/tensorflow
+fbcotter/dotfiles
+fbcotter/deconv_tf_vis
