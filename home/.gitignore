@@ -72,3 +72,5 @@ Thumbs.db
 venv/
 # Log Directories from Tensorboard
 logdir/
+
+*.swp

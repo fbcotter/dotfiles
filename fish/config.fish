@@ -43,7 +43,7 @@ end
 
 # Some aliases/environment variables
 set -gx EDITOR vim
-alias gitlog "git log --graph --decorate --oneline"
+alias gitlog "git log --graph --decorate --oneline --all"
 alias latexmk "latexmk -pdf -pvc"
 alias gtree "tree -a -I '.git|venv|*.egg-info|build|.cache|__pycache__|.ipynb_checkpoints|dist'"
 source $HOME/.config/fish/less_colours.fish
