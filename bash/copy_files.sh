@@ -39,9 +39,9 @@ case $HOSTNAME in
     (yoshi) 
         echo "Host detected as yoshi. Copying the yoshi aliases file"
         makesymlink $MYDIR/alias_vars_yoshi $BASHDIR/.bash_host_alias;;
-    (mario) 
-        echo "Host detected as mario. Copying the mario aliases file"
-        makesymlink $MYDIR/alias_vars_mario $BASHDIR/.bash_host_alias;;
+    (luigi) 
+        echo "Host detected as luigi. Copying the luigi aliases file"
+        makesymlink $MYDIR/alias_vars_luigi $BASHDIR/.bash_host_alias;;
     (Glen) 
         echo "Host detected as Glen. Copying the Glen aliases file"
         makesymlink $MYDIR/alias_vars_glen $BASHDIR/.bash_host_alias;;

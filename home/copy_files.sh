@@ -46,6 +46,8 @@ case $HOSTNAME in
         echo "Host detected as Glen.";;
     (hazza) 
         echo "Host detected as hazza.";;
+    (luigi) 
+        echo "Host detected as luigi.";;
     (*) 
         echo "Warning - Unkown Hostname.";;
 esac
