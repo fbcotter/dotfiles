@@ -26,6 +26,13 @@ do
 done;
 unset file;
 
+# Download vundle
+echo "Downloading Vundle for Vim"
+if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+    mkdir -p ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
 # Copy matplotlibrc file
 if [ ! -d "$HOME/.config/matplotlib" ]; then
     mkdir -p "$HOME/.config/matplotlib"
