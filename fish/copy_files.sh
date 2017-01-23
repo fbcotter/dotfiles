@@ -24,6 +24,7 @@ mkdir -p ~/.config/fish/functions
 makesymlink $MYDIR/config.fish $FISHDIR/config.fish
 
 # Make a link to the alias and environment variables file
+HOSTNAME=$(hostname)
 case $HOSTNAME in
     (yoshi) 
         echo "Host detected as yoshi. Copying the yoshi aliases file"

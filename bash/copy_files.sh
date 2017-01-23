@@ -35,6 +35,7 @@ echo "Symlinking functions"
 makesymlink $MYDIR/bash_functions $BASHDIR/.bash_functions
 
 # Make a link to the alias and environment variables file
+HOSTNAME=$(hostname)
 case $HOSTNAME in
     (yoshi) 
         echo "Host detected as yoshi. Copying the yoshi aliases file"
