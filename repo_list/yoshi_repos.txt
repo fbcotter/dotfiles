@@ -1,0 +1,16 @@
+rjw57/bigjobbies
+fbcotter/tensorflow_notebooks
+fbcotter/ipynb_output_filter
+fbcotter/deconv_tf_vis
+fbcotter/dotfiles
+fbcotter/py3nvml
+fbcotter/temp
+toobaz/ipynb_output_filter
+tuvistavie/fish-ssh-agent
+carpedm20/DCGAN-tensorflow
+oh-my-fish/oh-my-fish
+tensorflow/.git
+tensorflow/tools
+tensorflow/third_party
+tensorflow/util
+tensorflow/tensorflow
