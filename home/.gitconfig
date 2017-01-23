@@ -101,6 +101,8 @@
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
 	attibutesfile = /home/zelda/fbc23/.gitattributes
+	autocrlf = input 
+	safecrlf = false
 
 [color]
 
@@ -191,3 +193,5 @@
 [filter "dropoutput_ipynb"]
 	clean = ~/repos/toobaz/ipynb_output_filter/ipynb_output_filter.py
 	smudge = cat
+[credential]
+	helper = osxkeychain
