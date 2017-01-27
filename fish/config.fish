@@ -49,6 +49,7 @@ alias gtree "tree -a -I '.git|venv|*.egg-info|build|.cache|__pycache__|.ipynb_ch
 source $HOME/.config/fish/less_colours.fish
 source $HOME/.config/fish/alias_vars.fish
 set -gx TERM xterm-256color
+set -gx PATH $PATH $HOME/.local/bin
 
 # Some simple functions
 function glen 
