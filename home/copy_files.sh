@@ -18,7 +18,7 @@ function makesymlink {
     ln -s $1 $2
 }
 
-for file in .{ctags,functions,gitconfig,gitignore,gvimrc,inputrc,latexmkrc,screenrc,vimrc,wgetrc,gitattributes}
+for file in .{ctags,functions,gitconfig,gitignore,gvimrc,inputrc,latexmkrc,screenrc,vimrc,wgetrc,gitattributes,tmux.conf}
 do
     [ -r "$MYDIR/$file" ] && [ -f "$MYDIR/$file" ] && \
         echo "Symlinking $file" && \

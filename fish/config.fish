@@ -53,11 +53,14 @@ set -gx PATH $PATH $HOME/.local/bin
 
 # Some simple functions
 function glen 
-    ssh -t glen screen -dR $argv
+    # ssh -t glen screen -dR $argv
+    ssh -t glen "tmux attach || tmux new"
 end
 function yoshi
-    ssh -t yoshi screen -dR $argv
+    # ssh -t yoshi (tmux attach; or tmux new) $argv
+    ssh -t yoshi "tmux attach || tmux new"
 end
 function azure
-    ssh -t azure screen -dR $argv
+    # ssh -t azure screen -dR $argv
+    ssh -t azure "tmux attach || tmux new"
 end
