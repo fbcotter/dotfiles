@@ -190,7 +190,7 @@
 [init]
 	templatedir = ~/repos/fbcotter/dotfiles/git_template
 [filter "dropoutput_ipynb"]
-	clean = ~/repos/toobaz/ipynb_output_filter/ipynb_output_filter.py
+	clean = python3 ~/repos/toobaz/ipynb_output_filter/ipynb_output_filter.py
 	smudge = cat
 [credential]
 	helper = osxkeychain
