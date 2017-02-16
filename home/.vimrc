@@ -6,6 +6,9 @@ filetype off
 
 set shell=bash
 
+" Load the csope mappings file
+source $HOME/.vim/cscope.vim
+
 " TODO: Load plugins here (pathogen or vundle)
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
