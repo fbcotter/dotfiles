@@ -28,6 +28,8 @@ Plugin 'MattesGroeger/vim-bookmarks' "See :help bookmarks
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " Final line of plugins
 call vundle#end()
@@ -125,6 +127,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 map <F3> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""" Some vim-markdown settings"""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Security
 set modelines=0
 
