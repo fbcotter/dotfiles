@@ -1,15 +1,25 @@
 Host yoshi
     HostName yoshi.eng.cam.ac.uk
     User fbc23
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    LocalForward 38888 localhost:8888
+    LocalForward 38889 localhost:8889
+    LocalForward 36006 localhost:6006
+    LocalForward 36007 localhost:6007
+    LocalForward 40000 localhost:10000
 
 Host azure
-    HostName azurevm.uksouth.cloudapp.azure.com
+    HostName luigi.westeurope.cloudapp.azure.com
     User fbc23
     LocalForward 3389 localhost:3389
     LocalForward 3390 localhost:3390
     LocalForward 5900 localhost:5900
     LocalForward 5901 localhost:5901
-    LocalForward 18888 localhost:8888
-    LocalForward 18889 localhost:8889
-    LocalForward 16006 localhost:6006
-    LocalForward 16007 localhost:6007
+    LocalForward 28888 localhost:8888
+    LocalForward 28889 localhost:8889
+    LocalForward 26006 localhost:6006
+
+Host luigi 
+    HostName luigi.westeurope.cloudapp.azure.com
+    User fbc23

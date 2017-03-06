@@ -1,0 +1,38 @@
+Host glen
+    HostName maurice.eng.cam.ac.uk
+    ProxyCommand ssh -t -q -W %h:%p fbc23@gate.eng.cam.ac.uk 
+    User fbc23
+    LocalForward 13350 localhost:3350
+    LocalForward 13389 localhost:3389
+    LocalForward 15900 localhost:5900
+    LocalForward 15901 localhost:5901
+    LocalForward 18888 localhost:8888
+    LocalForward 18889 localhost:8889
+    LocalForward 16006 localhost:6006
+    LocalForward 16007 localhost:6007
+
+Host azure
+    HostName luigi.westeurope.cloudapp.azure.com
+    User fbc23
+    LocalForward 23350 localhost:3350
+    LocalForward 23389 localhost:3389
+    LocalForward 23390 localhost:3390
+    LocalForward 25900 localhost:5900
+    LocalForward 25901 localhost:5901
+    LocalForward 28888 localhost:8888
+    LocalForward 28889 localhost:8889
+    LocalForward 26006 localhost:6006
+    LocalForward 26007 localhost:6007
+
+Host mario 
+    HostName mario.eng.cam.ac.uk
+    User fbc23
+    LocalForward 23350 localhost:3350
+    LocalForward 23389 localhost:3389
+    LocalForward 23390 localhost:3390
+    LocalForward 25900 localhost:5900
+    LocalForward 25901 localhost:5901
+    LocalForward 28888 localhost:8888
+    LocalForward 28889 localhost:8889
+    LocalForward 26006 localhost:6006
+    LocalForward 26007 localhost:6007   
