@@ -8,11 +8,18 @@ DIR2="$DIR/../../.."
 # Make a link to the alias and environment variables file
 HOSTNAME=$(hostname)
 case $HOSTNAME in
+    (mario) 
+        DIR2=/scratch/fbc23/repos
+        echo "Host detected as mario. Creating the mario repo list"
+        find $DIR2 -maxdepth 2 -mindepth 2 -type d | \
+            sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
     (yoshi) 
+        DIR2=/scratch/fbc23/repos
         echo "Host detected as yoshi. Creating the yoshi repo list"
         find $DIR2 -maxdepth 2 -mindepth 2 -type d | \
             sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
     (luigi) 
+        DIR2=/scratch/fbc23/repos
         echo "Host detected as luigi. Creating the luigi repo list"
         find $DIR2 -maxdepth 2 -mindepth 2 -type d | \
             sed "s#$DIR2/##" > "$HOSTNAME"_repos.txt;;
