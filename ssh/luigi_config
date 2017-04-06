@@ -1,0 +1,19 @@
+Host yoshi
+    HostName yoshi.eng.cam.ac.uk
+    ProxyCommand ssh -q -p 80 -W %h:%p fbc23@gate.eng.cam.ac.uk
+    User fbc23
+    LocalForward 38888 localhost:8888
+    LocalForward 38889 localhost:8889
+    LocalForward 40000 localhost:10000
+    LocalForward 36006 localhost:6006
+    LocalForward 36007 localhost:6007
+
+Host mario 
+    HostName mario.eng.cam.ac.uk
+    ProxyCommand ssh -q -p 80 -W %h:%p fbc23@gate.eng.cam.ac.uk
+    User fbc23
+    LocalForward 38888 localhost:8888
+    LocalForward 38889 localhost:8889
+    LocalForward 40000 localhost:10000
+    LocalForward 36006 localhost:6006
+    LocalForward 36007 localhost:6007

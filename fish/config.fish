@@ -51,16 +51,7 @@ source $HOME/.config/fish/alias_vars.fish
 set -gx TERM xterm-256color
 set -gx PATH $PATH $HOME/.local/bin
 
-# Some simple functions
-function glen 
-    # ssh -t glen screen -dR $argv
-    ssh -t glen "tmux attach || tmux new"
-end
-function yoshi
-    # ssh -t yoshi (tmux attach; or tmux new) $argv
-    ssh -t yoshi "tmux attach || tmux new"
-end
-function azure
-    # ssh -t azure screen -dR $argv
-    ssh -t azure "tmux attach || tmux new"
+function pycscope
+    find . -path './venv' -prune -o -name '*.py*' -print > cscope.files
+    cscope -bR
 end

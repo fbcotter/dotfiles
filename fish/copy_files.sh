@@ -26,6 +26,9 @@ makesymlink $MYDIR/config.fish $FISHDIR/config.fish
 # Make a link to the alias and environment variables file
 HOSTNAME=$(hostname)
 case $HOSTNAME in
+    (mario) 
+        echo "Host detected as mario. Copying the mario aliases file"
+        makesymlink $MYDIR/alias_vars_mario.fish $FISHDIR/alias_vars.fish;;
     (yoshi) 
         echo "Host detected as yoshi. Copying the yoshi aliases file"
         makesymlink $MYDIR/alias_vars_yoshi.fish $FISHDIR/alias_vars.fish;;
