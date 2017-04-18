@@ -2,6 +2,7 @@ Host yoshi
     HostName yoshi.eng.cam.ac.uk
     ProxyCommand ssh -q -p 80 -W %h:%p fbc23@gate.eng.cam.ac.uk
     User fbc23
+    SendEnv LC_COLORS
     LocalForward 38888 localhost:8888
     LocalForward 38889 localhost:8889
     LocalForward 40000 localhost:10000
@@ -12,6 +13,7 @@ Host mario
     HostName mario.eng.cam.ac.uk
     ProxyCommand ssh -q -p 80 -W %h:%p fbc23@gate.eng.cam.ac.uk
     User fbc23
+    SendEnv LC_COLORS
     LocalForward 38888 localhost:8888
     LocalForward 38889 localhost:8889
     LocalForward 40000 localhost:10000
@@ -22,6 +24,7 @@ Host glen
     HostName maurice.eng.cam.ac.uk
     ProxyCommand ssh -t -q -W %h:%p fbc23@gate.eng.cam.ac.uk 
     User fbc23
+    SendEnv LC_COLORS
     LocalForward 13350 localhost:3350
     LocalForward 13389 localhost:3389
     LocalForward 15900 localhost:5900
@@ -34,6 +37,7 @@ Host glen
 Host azure
     HostName luigi.westeurope.cloudapp.azure.com
     User fbc23
+    SendEnv LC_COLORS
     LocalForward 23350 localhost:3350
     LocalForward 23389 localhost:3389
     LocalForward 23390 localhost:3390
