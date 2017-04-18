@@ -58,3 +58,6 @@ do
     makesymlink $f $FISHDIR/functions/$(basename $f)
 done
 
+if [ ! -d $HOME/.local/share/omf ]; then
+    $MYDIR/install_omf.sh
+fi 
