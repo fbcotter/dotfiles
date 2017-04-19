@@ -7,6 +7,11 @@ if test -z "$SSH_ENV"
     setenv SSH_ENV $HOME/.ssh/environment
 end
 
+# Start ssh agent
+if not __ssh_agent_is_started
+    __ssh_agent_start
+end
+
 # Path to Oh My Fish install.
 set -q XDG_DATA_HOME
   and set -gx OMF_PATH "$XDG_DATA_HOME/omf"
