@@ -75,6 +75,8 @@ logdir/
 
 *.swp
 
+# Pycharm project files
+.idea
 # Cscope files
 cscope.out
 cscope.files

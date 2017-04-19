@@ -49,6 +49,10 @@ filetype plugin indent on
 " Turn on syntax highlighting
 syntax enable
 set background=dark
+let colors_env=$LC_COLORS
+if colors_env == 'light'
+    set background=light
+endif
 colorscheme solarized
 
 " Allow windows style ctrl+c, ctrl+v to work in vim

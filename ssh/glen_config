@@ -20,6 +20,13 @@ Host azure
     LocalForward 28889 localhost:8889
     LocalForward 26006 localhost:6006
 
-Host luigi 
-    HostName luigi.westeurope.cloudapp.azure.com
+Host mario
+    HostName mario.eng.cam.ac.uk
     User fbc23
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    LocalForward 38888 localhost:8888
+    LocalForward 38889 localhost:8889
+    LocalForward 36006 localhost:6006
+    LocalForward 36007 localhost:6007
+    LocalForward 40000 localhost:10000
