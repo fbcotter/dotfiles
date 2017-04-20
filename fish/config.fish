@@ -54,6 +54,7 @@ source $HOME/.config/fish/less_colours.fish
 source $HOME/.config/fish/alias_vars.fish
 set -gx TERM xterm-256color
 set -gx PATH $PATH $HOME/.local/bin
+set -gx TEXINPUTS ".:$HOME/mylatex/:$TEXINPUTS"
 
 function pycscope
     find . -path './venv' -prune -o -name '*.py*' -print > cscope.files
