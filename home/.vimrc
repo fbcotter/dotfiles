@@ -72,9 +72,9 @@ set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
 
 """"""""""""""""""""" Some airline settings """""""""""""""""""""""""""""
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 """"""""""""""""""""" Some vim-latex settings """""""""""""""""""""""""""""
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
