@@ -32,6 +32,9 @@ unset file;
 #   Start the ssh-agent
 # eval $(ssh-agent -s)  # Start the ssh-agent
 
+# Set my shell
+export MYSHELL=$(which fish)
+
 #   Set some tab completion
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;

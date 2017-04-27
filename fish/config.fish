@@ -29,6 +29,7 @@ set -gx theme_nerd_fonts yes
 set -gx theme_display_ruby no
 set -gx theme_display_virtualenv yes
 set -gx theme_display_user yes
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 # if the environment variable "COLORS" is set, set the scheme to light
 if [ $LC_COLORS -a $LC_COLORS = "light" ] 
     set -gx theme_color_scheme solarized-light
