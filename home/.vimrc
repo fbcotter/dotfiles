@@ -208,7 +208,9 @@ set hidden
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 " Close one buffer and go to the next
-command Bd bp | sp | bn | bd
+if !exists(":Bd")
+    command Bd bp | sp | bn | bd
+endif
 
 " Rendering
 set ttyfast

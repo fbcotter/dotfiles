@@ -27,6 +27,8 @@ source $OMF_PATH/init.fish
 # Some bobthefish settings 
 set -gx theme_nerd_fonts yes
 set -gx theme_display_ruby no
+set -gx theme_project_dir_length 1 
+set -gx fish_prompt_pwd_dir_length 1 
 set -gx theme_display_virtualenv yes
 set -gx theme_display_user yes
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
