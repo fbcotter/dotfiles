@@ -36,3 +36,8 @@ Host yoshi
     LocalForward 28889 localhost:8889
     LocalForward 26006 localhost:6006
     LocalForward 26007 localhost:6007   
+
+Host luigi
+    HostName luigi.westeurope.cloudapp.azure.com
+    User fbc23
+
