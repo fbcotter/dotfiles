@@ -8,5 +8,5 @@ oh-my-fish/bin/install --offline --noninteractive
 popd
 # make sure the prompt is clear
 /bin/rm ~/.config/fish/functions/fish_prompt.fish || true
-fish -c "omf theme bobthefish"
-exec fish
+# fish -c "omf theme bobthefish"
+# exec fish

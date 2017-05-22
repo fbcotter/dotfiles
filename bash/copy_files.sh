@@ -43,9 +43,6 @@ case $HOSTNAME in
     (yoshi) 
         echo "Host detected as yoshi. Copying the yoshi aliases file"
         makesymlink $MYDIR/alias_vars_yoshi $BASHDIR/.bash_host_alias;;
-    (luigi) 
-        echo "Host detected as luigi. Copying the luigi aliases file"
-        makesymlink $MYDIR/alias_vars_luigi $BASHDIR/.bash_host_alias;;
     (Glen) 
         echo "Host detected as Glen. Copying the Glen aliases file"
         makesymlink $MYDIR/alias_vars_glen $BASHDIR/.bash_host_alias;;
@@ -53,8 +50,8 @@ case $HOSTNAME in
         echo "Host detected as hazza. Copying the hazza aliases file"
         makesymlink $MYDIR/alias_vars_hazza $BASHDIR/.bash_host_alias;;
     (*) 
-        echo "Warning - Unkown Hostname. Blank alias file copied" && \
-        makesymlink $MYDIR/alias_vars_blank.fish $BASHDIR/alias_vars.fish;;
+        echo "Warning - Undefined Hostname. Blank alias file copied" && \
+        makesymlink $MYDIR/alias_vars_blank $BASHDIR/.bash_host_alias;;
 esac
 
 

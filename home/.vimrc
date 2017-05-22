@@ -34,6 +34,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin '907th/vim-auto-save'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'davidhalter/jedi-vim'
+" Plugin 'jmcantrell/vim-virtualenv'
+" Plugin 'nvie/vim-flake8complex '
 
 " Final line of plugins
 call vundle#end()
@@ -142,6 +146,22 @@ let g:vim_markdown_math = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""" Some auto-save settings"""""""""""""""""""""""""""""
 let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLeave", "TextChangedI"]
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""" Some YouCompleteMe settings """""""""""""""""""""""""
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+    " project_base_dir = os.environ['VIRTUAL_ENV']
+    " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    " execfile(activate_this, dict(__file__=activate_this))
+" EOF
+" let g:ycm_server_python_interpreter='python3'
+" let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+" let g:ycm_complete_in_comments = 1 " Completion in comments
+" let g:ycm_complete_in_strings = 1 " Completion in string
+" map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Security
