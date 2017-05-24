@@ -16,7 +16,12 @@ Host glen
     User fbc23
     SendEnv LC_COLORS
 
-Host azure
+Host luigi 
     HostName luigi.westeurope.cloudapp.azure.com
+    User fbc23
+    SendEnv LC_COLORS
+
+Host luigi2
+    HostName luigi2.westeurope.cloudapp.azure.com
     User fbc23
     SendEnv LC_COLORS

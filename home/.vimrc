@@ -34,7 +34,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin '907th/vim-auto-save'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Rykka/riv.vim'
+" Plugin 'joom/latex-unicoder'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'nvie/vim-flake8complex '
@@ -156,12 +158,15 @@ let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLe
     " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     " execfile(activate_this, dict(__file__=activate_this))
 " EOF
-" let g:ycm_server_python_interpreter='python3'
+let g:ycm_server_python_interpreter='python3'
 " let g:ycm_autoclose_preview_window_after_completion=1
-" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-" let g:ycm_complete_in_comments = 1 " Completion in comments
-" let g:ycm_complete_in_strings = 1 " Completion in string
-" map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""" Some riv.vim settings """"""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Security
@@ -197,6 +202,7 @@ set scrolloff=3
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
 runtime! macros/matchit.vim
+
 
 " Move up/down editor lines
 nnoremap j gj
