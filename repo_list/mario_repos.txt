@@ -1,0 +1,14 @@
+edouardoyallon/pyscatwave
+MarvinTeichmann/TensorVision
+MarvinTeichmann/KittiSeg
+tensorflow/models
+fbcotter/dtcwt
+fbcotter/deconv_tf_vis
+fbcotter/fast-style-transfer
+fbcotter/simple_style
+fbcotter/WaveletNet
+fbcotter/neural-style
+fbcotter/py3nvml
+fbcotter/phdnets
+fbcotter/un_vgg
+fbcotter/forward_pass
