@@ -21,9 +21,6 @@ Plugin 'lervag/vimtex'
 Plugin 'vim-utils/vim-man'
 Plugin 'tpope/vim-fugitive'
 Plugin 'chrisbra/Recover.vim'
-"Plugin 'gerw/vim-latex-suite'
-"Plugin 'vim-latex/vim-latex'
-"Plugin 'jcf/vim-latex.git'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'    
 Plugin 'scrooloose/nerdtree'         
@@ -36,10 +33,6 @@ Plugin 'plasticboy/vim-markdown'
 Plugin '907th/vim-auto-save'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Rykka/riv.vim'
-" Plugin 'joom/latex-unicoder'
-" Plugin 'davidhalter/jedi-vim'
-" Plugin 'jmcantrell/vim-virtualenv'
-" Plugin 'nvie/vim-flake8complex '
 
 " Final line of plugins
 call vundle#end()
@@ -63,8 +56,8 @@ colorscheme solarized
 
 " Allow windows style ctrl+c, ctrl+v to work in vim
 " Now, to get to visual mode, use CTRL-Q
-source $VIMRUNTIME/mswin.vim
-behave mswin
+" source $VIMRUNTIME/mswin.vim
+" behave mswin
 
 " Set the home directory to the e drive
 "let workpath='E:\Google Drive'
@@ -117,8 +110,8 @@ let g:syntastic_enable_signs = 1
 
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "!"
-" let g:syntastic_style_error_symbol = "😞 "
-" let g:syntastic_style_warning_symbol = "😕 " 
+let g:syntastic_style_error_symbol = ":("
+let g:syntastic_style_warning_symbol = ":/"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""" Some Nerdcommenter settings"""""""""""""""""""""""""""""
@@ -187,6 +180,7 @@ set visualbell
 
 " Encoding
 set encoding=utf-8
+set termencoding=utf-8
 
 " Whitespace
 set wrap
