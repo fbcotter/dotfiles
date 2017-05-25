@@ -38,6 +38,9 @@ coverage.xml
 # Translations
 *.mo
 
+# Pyenv files
+.python-version
+
 # Mr Developer
 .mr.developer.cfg
 .project
