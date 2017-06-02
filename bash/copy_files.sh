@@ -8,12 +8,11 @@ BASHDIR=$HOME
 #   to where we want it to, but it is trivial to just remove it,
 #   add it again, and be sure about it.
 function makesymlink {
-    if [ -f $2 ]; then
-        if [ -h $2 ]; then
-            rm $2
-        else
-            mv $2 $2.old
-        fi
+    if [ -h $2 ]; then
+        rm $2
+    elif [ -f $2 ]; then
+        echo "$2 exists. Moving it to $2.old"
+        mv $2 $2.old
     fi
     ln -s $1 $2
 }
