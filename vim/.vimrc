@@ -92,7 +92,7 @@ hi clear texBoldStyle
 """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_tex_checkers = ['lacheck']
-let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731"
+let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731,E231,E226"
 let g:syntastic_python_flake8_args = options
 let g:syntastic_python_pylint_args = "-j8 -E"
 "let g:statline_syntastic = 0
@@ -184,7 +184,7 @@ set termencoding=utf-8
 
 " Whitespace
 set wrap
-set textwidth=79
+set textwidth=80
 set formatoptions=tcqrn1
 set tabstop=4
 set shiftwidth=0 " Uses whatever tabstop value we have

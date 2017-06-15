@@ -8,32 +8,22 @@ BASHDIR=$HOME
 #   to where we want it to, but it is trivial to just remove it,
 #   add it again, and be sure about it.
 function makesymlink {
-    if [ -f $2 ]; then
-        if [ -h $2 ]; then
-            rm $2
-        else
-            mv $2 $2.old
-        fi
+    if [ -h $2 ]; then
+        rm $2
+    elif [ -f $2 ]; then
+        echo "$2 exists. Moving it to $2.old"
+        mv $2 $2.old
     fi
     ln -s $1 $2
 }
 
-for file in .{ctags,functions,gitconfig,gitignore,gvimrc,inputrc,latexmkrc,screenrc,vimrc,wgetrc,gitattributes,tmux.conf}
+for file in .{ctags,functions,gitconfig,gitignore,inputrc,latexmkrc,screenrc,wgetrc,gitattributes,tmux.conf}
 do
     [ -r "$MYDIR/$file" ] && [ -f "$MYDIR/$file" ] && \
         echo "Symlinking $file" && \
         makesymlink $MYDIR/$file $HOME/$file;
 done;
 unset file;
-
-# Download vundle
-echo "Downloading Vundle for Vim"
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-    mkdir -p ~/.vim/bundle/Vundle.vim
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-# Copy ctags.vim file
-makesymlink $MYDIR/cscope.vim $HOME/.vim/cscope.vim
 
 # Copy matplotlibrc file
 if [ ! -d "$HOME/.config/matplotlib" ]; then
