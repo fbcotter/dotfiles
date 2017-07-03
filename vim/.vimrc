@@ -157,7 +157,7 @@ let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLe
     " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     " execfile(activate_this, dict(__file__=activate_this))
 " EOF
-let g:ycm_server_python_interpreter='python3'
+let g:ycm_server_python_interpreter='/usr/bin/python'
 " let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
@@ -185,7 +185,10 @@ omap <Leader>/ <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"""""""""""""""""""""""""" Some ctrlP settings """""""""""""""""""""""""""
+let g:ctrlp_map = '<c-o>'
+let g:ctrlp_cmd = 'CtrlP'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Security
 set modelines=0
 
