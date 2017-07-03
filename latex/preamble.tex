@@ -15,7 +15,7 @@
 % Package for having nice bold and uppercase characters
 % in formulae
 % Already loaded by the PHD thesis class
-\usepackage{mathptmx} % Replaced the times package
+% \usepackage{mathptmx} % Replaced the times package
 % Keep the old calligraphic math font
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
@@ -86,7 +86,7 @@
 \usetikzlibrary{matrix,positioning,arrows}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{calc}
-\usetikzlibrary{external}\tikzexternalize         % Allow tikz images to be
+% \usetikzlibrary{external}\tikzexternalize         % Allow tikz images to be
                                                   % compiled once
 % Make examples in your document
 \usepackage{amsthm}
@@ -129,3 +129,4 @@
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\renewcommand\rmdefault{hpv}
