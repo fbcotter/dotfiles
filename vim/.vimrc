@@ -16,8 +16,8 @@ call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'wincent/Command-T'
-Plugin 'lervag/vimtex' 
+" Plugin 'wincent/Command-T'
+" Plugin 'lervag/vimtex' 
 Plugin 'vim-utils/vim-man'
 Plugin 'tpope/vim-fugitive'
 Plugin 'chrisbra/Recover.vim'
@@ -28,11 +28,13 @@ Plugin 'MattesGroeger/vim-bookmarks' "See :help bookmarks
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin '907th/vim-auto-save'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'Rykka/riv.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'kien/ctrlp.vim'
+" Plugin 'Rykka/riv.vim'
 
 " Final line of plugins
 call vundle#end()
@@ -92,7 +94,7 @@ hi clear texBoldStyle
 """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_tex_checkers = ['lacheck']
-let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731,E231,E226"
+let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731,E231,E226,C901"
 let g:syntastic_python_flake8_args = options
 let g:syntastic_python_pylint_args = "-j8 -E"
 "let g:statline_syntastic = 0
@@ -155,17 +157,38 @@ let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLe
     " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     " execfile(activate_this, dict(__file__=activate_this))
 " EOF
-let g:ycm_server_python_interpreter='python3'
+let g:ycm_server_python_interpreter='/usr/bin/python'
 " let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""" Some riv.vim settings """"""""""""""""""""""""""""
+"""""""""""""""""""""""" Some easymotion settings """""""""""""""""""""""""
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+map  <Leader>/ <Plug>(easymotion-sn)
+omap <Leader>/ <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"""""""""""""""""""""""""" Some ctrlP settings """""""""""""""""""""""""""
+let g:ctrlp_map = '<c-o>'
+let g:ctrlp_cmd = 'CtrlP'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Security
 set modelines=0
 

@@ -35,7 +35,7 @@ makesymlink $MYDIR/matplotlibrc $HOME/.config/matplotlib/matplotlibrc
 # Make a link to the alias and environment variables file
 case $HOSTNAME in
     (mario) 
-        echo "Host detected as yoshi.";;
+        echo "Host detected as mario.";;
     (yoshi) 
         echo "Host detected as yoshi.";;
     (Glen) 
