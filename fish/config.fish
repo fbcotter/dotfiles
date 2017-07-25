@@ -53,12 +53,15 @@ set -gx EDITOR vim
 alias gitlog "git log --graph --decorate --oneline --all"
 alias latexmk "latexmk -pdf -pvc"
 alias gtree "tree -a -I '.git|venv|*.egg-info|build|.cache|__pycache__|.ipynb_checkpoints|dist'"
-alias mymatlab "set -gx SHELL /bin/bash; matlab -nosplash -nodesktop"
+alias mymatlab "set -gx SHELL /bin/bash; matlab"
+alias mymatlab_shell "set -gx SHELL /bin/bash; matlab -nosplash -nodesktop"
+alias cords pip
 source $HOME/.config/fish/less_colours.fish
 source $HOME/.config/fish/alias_vars.fish
 set -gx TERM xterm-256color
 set -gx PATH $PATH $HOME/.local/bin
 set -gx TEXINPUTS ".:$HOME/mylatex/:$TEXINPUTS"
+set -gx BIBINPUTS "$HOME/mylatex/:$BIBINPUTS"
 
 function pycscope
     find . -path './venv' -prune -o -name '*.py*' -print > cscope.files
