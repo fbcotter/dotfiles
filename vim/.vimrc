@@ -182,8 +182,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 map  <Leader>/ <Plug>(easymotion-sn)
 omap <Leader>/ <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""" Some ctrlP settings """""""""""""""""""""""""""
 let g:ctrlp_map = '<c-o>'
