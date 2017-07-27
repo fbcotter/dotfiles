@@ -93,16 +93,16 @@ hi clear texBoldStyle
 
 """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_tex_checkers = ['lacheck']
+" let g:syntastic_python_flake8_exec = '/usr/bin/python3'
 let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731,E231,E226,C901"
 let g:syntastic_python_flake8_args = options
-let g:syntastic_python_pylint_args = "-j8 -E"
+let g:syntastic_tex_checkers = ['lacheck']
 "let g:statline_syntastic = 0
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -114,6 +114,9 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "!"
 let g:syntastic_style_error_symbol = ":("
 let g:syntastic_style_warning_symbol = ":/"
+" Easy cycling through errors 
+nnoremap <C-j> :lnext<CR>
+nnoremap <C-k> :lprev<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""" Some Nerdcommenter settings"""""""""""""""""""""""""""""
@@ -157,7 +160,7 @@ let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLe
     " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     " execfile(activate_this, dict(__file__=activate_this))
 " EOF
-let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_server_python_interpreter='/usr/bin/python3'
 " let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
