@@ -34,6 +34,7 @@ Plugin '907th/vim-auto-save'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Vimjas/vim-python-pep8-indent'
 " Plugin 'Rykka/riv.vim'
 
 " Final line of plugins
@@ -124,7 +125,7 @@ let g:NERDSpaceDelims = 1
 "let g:NERDCompactSexyComs
 
 " Allow commenting empty lines
-let g:NERDCommentEmptyLines = 1
+" let g:NERDCommentEmptyLines = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""" Some Nerdtree settings"""""""""""""""""""""""""""""
@@ -157,11 +158,16 @@ let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLe
     " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     " execfile(activate_this, dict(__file__=activate_this))
 " EOF
-let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_server_python_interpreter='/usr/bin/python3'
 " let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_filetype_blacklist = {
+    \ 'markdown' : 1,
+    \ 'rst'      : 1,
+    \ 'tex'      : 1
+\}
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""" Some easymotion settings """""""""""""""""""""""""
