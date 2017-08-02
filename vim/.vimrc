@@ -31,7 +31,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin '907th/vim-auto-save'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
@@ -73,6 +73,11 @@ set enc=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
 
+""""""""""""""""""""" Some bookmark settings """""""""""""""""""""""""""""
+nnoremap <C-S-b> :BookmarkToggle<CR>
+nnoremap <C-S-x> :BookmarkNext<CR>
+nnoremap <C-S-z> :BookmarkPrev<CR>
+nnoremap <C-S-g> :BookmarkShowAll<CR>
 """"""""""""""""""""" Some airline settings """""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
