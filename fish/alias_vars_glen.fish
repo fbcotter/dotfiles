@@ -10,3 +10,4 @@ set -gx PATH $PYENV_ROOT/bin ~/.local/bin /usr/local/texlive/2016/bin/x86_64-lin
 set -gx INFOPATH $INFOPATH /usr/local/texlive/2016/texmf-dist/doc/info
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)
+set -gx LC_SSH_LOGIN 1
