@@ -1,3 +1,4 @@
+export HOME="/scratch/fbc23"
 export PATH="$HOME/bin/:$PATH"
 export SCRATCHDIR="/scratch/fbc23"
 export RESULTSDIR="$SCRATCHDIR/results"
