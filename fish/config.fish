@@ -62,6 +62,7 @@ set -gx TERM xterm-256color
 set -gx PATH $PATH $HOME/.local/bin
 set -gx TEXINPUTS ".:$HOME/mylatex:$HOME/mylatex/tikz-dsp:$TEXINPUTS"
 set -gx BIBINPUTS "$HOME/mylatex:$BIBINPUTS"
+set -gx BSTINPUTS "$HOME/mylatex:$BSTINPUTS"
 
 function pycscope
     find . -path './venv' -prune -o -name '*.py*' -print > cscope.files
