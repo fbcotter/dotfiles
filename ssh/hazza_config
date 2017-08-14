@@ -10,6 +10,7 @@ Host mario
     LocalForward 10000 localhost:10000
     LocalForward 10001 localhost:10001
     LocalForward 10002 localhost:10002
+    LocalForward 18000 localhost:18000
     ProxyCommand ssh -q -p 80 -W %h:%p fbc23@gate.eng.cam.ac.uk
     User fbc23
     SendEnv LC_COLORS, LC_SSH_LOGIN
