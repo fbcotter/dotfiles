@@ -5,7 +5,9 @@ set -gx PYENV_ROOT "$HOME/.pyenv"
 set -gx PATH /usr/local/bin /Developer/NVIDIA/CUDA-8.0/bin $PATH
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)
-alias rm "echo Use 'trash', 'del' or the full path i.e. '/bin/rm'"
+# alias rm "echo Use 'trash', 'del' or the full path i.e. '/bin/rm'"
 alias ipy "python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias ipy3 "python3 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias screen "/usr/local/bin/screen"
+set -gx LC_SSH_LOGIN 1
+set -gx PKG_CONFIG_PATH "PKG_CONFIG_PATH:/usr/local/opt/opencv3/lib/pkgconfig/"

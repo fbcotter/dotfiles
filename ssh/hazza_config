@@ -6,9 +6,13 @@ Host yoshi
 
 Host mario 
     HostName mario.eng.cam.ac.uk
+    ForwardX11 Yes
+    LocalForward 10000 localhost:10000
+    LocalForward 10001 localhost:10001
+    LocalForward 10002 localhost:10002
     ProxyCommand ssh -q -p 80 -W %h:%p fbc23@gate.eng.cam.ac.uk
     User fbc23
-    SendEnv LC_COLORS
+    SendEnv LC_COLORS, LC_SSH_LOGIN
 
 Host glen
     HostName maurice.eng.cam.ac.uk
@@ -25,3 +29,13 @@ Host luigi2
     HostName luigi2.westeurope.cloudapp.azure.com
     User fbc23
     SendEnv LC_COLORS
+
+Host pi
+    HostName khczijtkqk7jjd2d.onion
+    User pi
+    ProxyCommand connect -R remote -5 -S 127.0.0.1:9050 %h %p
+    ForwardX11 yes
+
+Host *.onion
+    ProxyCommand connect -R remote -5 -S 127.0.0.1:9050 %h %p
+    ForwardX11 yes
