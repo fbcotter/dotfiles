@@ -36,3 +36,10 @@ Host mario
     ForwardX11 yes
     ForwardX11Trusted yes
     SendEnv LC_COLORS, LC_SSH_LOGIN
+
+Host cbas
+    HostName 40.114.245.128
+    User cbas_dev
+    ForwardX11 yes
+    LocalForward 20000 localhost:20000
+    LocalForward 20001 localhost:20001
