@@ -32,9 +32,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'plasticboy/vim-markdown'
 Plugin '907th/vim-auto-save'
 " Plugin 'Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'junegunn/vim-peekaboo'
 " Plugin 'Rykka/riv.vim'
 
 " Final line of plugins
@@ -73,29 +75,36 @@ set enc=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
 
+
+" Moving back and forth between lines of same or lower indentation.
+nnoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
+nnoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
+nnoremap <silent> [L :call NextIndent(0, 0, 1, 1)<CR>
+
 """"""""""""""""""""" Some bookmark settings """""""""""""""""""""""""""""
 nnoremap <C-S-b> :BookmarkToggle<CR>
 nnoremap <C-S-x> :BookmarkNext<CR>
 nnoremap <C-S-z> :BookmarkPrev<CR>
 nnoremap <C-S-g> :BookmarkShowAll<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""" Some airline settings """""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""" Some vim-latex settings """""""""""""""""""""""""""""
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
 " can be called correctly.
 " set shellslash
-
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 " set grepprg=grep\ -nH\ $*
-
 " let g:tex_flavor='latex'
 hi clear texItalStyle
 hi clear texBoldStyle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
 let g:syntastic_python_checkers = ['flake8']
@@ -107,15 +116,13 @@ let g:syntastic_tex_checkers = ['lacheck']
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_enable_signs = 1
-
+" Gutter symbols
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "!"
 let g:syntastic_style_error_symbol = ":("
@@ -128,10 +135,8 @@ nnoremap <C-k> :lprev<CR>
 """"""""""""""""""""" Some Nerdcommenter settings"""""""""""""""""""""""""""""
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-
 " Use compact syntax for prettified multi-line comments
 "let g:NERDCompactSexyComs
-
 " Allow commenting empty lines
 " let g:NERDCommentEmptyLines = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -142,35 +147,27 @@ let g:NERDSpaceDelims = 1
 " Automatically start nerdtree on opening vim
 autocmd vimenter * NERDTree
 autocmd vimenter * wincmd p
-
 " Autoclose vim if only window open is nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-
 map <F3> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""" Some vim-markdown settings"""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_math = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""" Some auto-save settings"""""""""""""""""""""""""""""
 let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLeave", "TextChangedI"]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""" Some YouCompleteMe settings """""""""""""""""""""""""
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-    " project_base_dir = os.environ['VIRTUAL_ENV']
-    " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    " execfile(activate_this, dict(__file__=activate_this))
-" EOF
 let g:ycm_server_python_interpreter='python'
 " let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_complete_in_comments = 0 " Completion in comments
+let g:ycm_complete_in_strings = 0 " Completion in string
 let g:ycm_filetype_blacklist = {
     \ 'markdown' : 1,
     \ 'rst'      : 1,
@@ -178,31 +175,46 @@ let g:ycm_filetype_blacklist = {
 \}
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""" Some jedi-vim settings """"""""""""""""""""""""""
+let g:jedi#auto_vim_configuration = 0
+set completeopt=menuone,longest
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = 1
+" augroup previewWindowPosition
+   " au!
+   " autocmd BufWinEnter * call PreviewWindowPosition()
+" augroup END
+" function! PreviewWindowPosition()
+   " if &previewwindow
+      " wincmd L
+   " endif
+" endfunction 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""" Some easymotion settings """""""""""""""""""""""""
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
-
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
-
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
-
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-
 map  <Leader>/ <Plug>(easymotion-sn)
 omap <Leader>/ <Plug>(easymotion-tn)
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""" Some ctrlP settings """""""""""""""""""""""""""
 let g:ctrlp_map = '<c-o>'
 let g:ctrlp_cmd = 'CtrlP'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Security
 set modelines=0
 
@@ -298,5 +310,36 @@ noh
 
 " Allow scrolling
 set mouse=a
-map <C-L> zL " Scroll 20 characters to the right
-map <C-H> zH " Scroll 20 characters to the left
+
+" Jump to the next or previous line that has the same level or a lower
+" level of indentation than the current line.
+"
+" exclusive (bool): true: Motion is exclusive
+" false: Motion is inclusive
+" fwd (bool): true: Go to next line
+" false: Go to previous line
+" lowerlevel (bool): true: Go to line with lower indentation level
+" false: Go to line with the same indentation level
+" skipblanks (bool): true: Skip blank lines
+" false: Don't skip blank lines
+function! NextIndent(exclusive, fwd, lowerlevel, skipblanks)
+  let line = line('.')
+  let column = col('.')
+  let lastline = line('$')
+  let indent = indent(line)
+  let stepvalue = a:fwd ? 1 : -1
+  while (line > 0 && line <= lastline)
+    let line = line + stepvalue
+    if ( ! a:lowerlevel && indent(line) == indent ||
+          \ a:lowerlevel && indent(line) < indent)
+      if (! a:skipblanks || strlen(getline(line)) > 0)
+        if (a:exclusive)
+          let line = line - stepvalue
+        endif
+        exe line
+        exe "normal " column . "|"
+        return
+      endif
+    endif
+  endwhile
+endfunction

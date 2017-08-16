@@ -61,5 +61,6 @@ do
 done
 
 if [ ! -d $HOME/.local/share/omf ]; then
-    $MYDIR/install_omf.sh
+    echo "OMF was not installed. See the install_omf.sh script for how to do this"
+    # $MYDIR/install_omf.sh
 fi 
