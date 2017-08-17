@@ -19,11 +19,25 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{bash_prompt,exports,aliases,functions,extra,bash_host_alias}; do
+for file in ~/.{bash_prompt,exports,aliases,functions,extra}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file" > /dev/null 2>&1;
 done;
 unset file;
 
+# load in alias files specific to which machine we are on
+HOSTNAME=$(hostname)
+case $HOSTNAME in
+    (mario) 
+        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_mario" > /dev/null 2>&1;;
+    (yoshi) 
+        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_yoshi" > /dev/null 2>&1;;
+    (Glen) 
+        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_glen" > /dev/null 2>&1;;
+    (hazza) 
+        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_hazza" > /dev/null 2>&1;;
+    (*) 
+        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_blank" > /dev/null 2>&1;;
+esac
 #   Start the ssh-agent
 # eval $(ssh-agent -s)  # Start the ssh-agent
 
