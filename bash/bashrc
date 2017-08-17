@@ -28,15 +28,15 @@ unset file;
 HOSTNAME=$(hostname)
 case $HOSTNAME in
     (mario) 
-        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_mario" > /dev/null 2>&1;;
+        source "$HOME/.alias_vars_mario" > /dev/null 2>&1;;
     (yoshi) 
-        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_yoshi" > /dev/null 2>&1;;
+        source "$HOME/.alias_vars_yoshi" > /dev/null 2>&1;;
     (Glen) 
-        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_glen" > /dev/null 2>&1;;
+        source "$HOME/.alias_vars_glen" > /dev/null 2>&1;;
     (hazza) 
-        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_hazza" > /dev/null 2>&1;;
+        source "$HOME/.alias_vars_hazza" > /dev/null 2>&1;;
     (*) 
-        [ -r "$file" ] && [ -f "$file" ] && source "~/.alias_vars_blank" > /dev/null 2>&1;;
+        source "$HOME/.alias_vars_blank" > /dev/null 2>&1;;
 esac
 #   Start the ssh-agent
 # eval $(ssh-agent -s)  # Start the ssh-agent
