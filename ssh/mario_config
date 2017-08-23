@@ -42,7 +42,7 @@ Host luigi
     User fbc23
 
 Host cbas
-    HostName 40.114.245.128
+    HostName 40.68.83.154
     User cbas_dev
     ForwardX11 yes
     LocalForward 20000 localhost:20000
