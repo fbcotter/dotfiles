@@ -25,4 +25,6 @@ echo "Symlinking defs"
 makesymlink $MYDIR/defs.tex $LATEXDIR/defs.tex
 echo "Symlinking other packages"
 makesymlink $MYDIR/tikz-dsp $LATEXDIR/tikz-dsp
+makesymlink $MYDIR/spconf.sty $LATEXDIR/spconf.sty
+makesymlink $MYDIR/IEEEbib.bst $LATEXDIR/IEEEbib.bst
 

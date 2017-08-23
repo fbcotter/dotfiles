@@ -21,23 +21,23 @@ set -q XDG_DATA_HOME
 source $OMF_PATH/init.fish
 
 # Some agnoster settings -> display user@host
-# set -g theme_display_user yes
-# set -g theme_hide_hostname no
+set -g theme_display_user yes
+set -g theme_hide_hostname no
 
 # Some bobthefish settings 
-set -gx theme_nerd_fonts yes
-set -gx theme_display_ruby no
-set -gx theme_project_dir_length 1 
-set -gx fish_prompt_pwd_dir_length 1 
-set -gx theme_display_virtualenv yes
-set -gx theme_display_user yes
-set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-# if the environment variable "COLORS" is set, set the scheme to light
-if [ $LC_COLORS -a $LC_COLORS = "light" ] 
-    set -gx theme_color_scheme solarized-light
-else
-    set -gx theme_color_scheme solarized-dark
-end
+# set -gx theme_nerd_fonts yes
+# set -gx theme_display_ruby no
+# set -gx theme_project_dir_length 1 
+# set -gx fish_prompt_pwd_dir_length 1 
+# set -gx theme_display_virtualenv yes
+# set -gx theme_display_user yes
+# set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+# # if the environment variable "COLORS" is set, set the scheme to light
+# if [ $LC_COLORS -a $LC_COLORS = "light" ] 
+    # set -gx theme_color_scheme solarized-light
+# else
+    # set -gx theme_color_scheme solarized-dark
+# end
 
 # Turn on vim bindings
 # fish -v outputted to stderr on some of my machines??
@@ -57,12 +57,25 @@ alias mymatlab "set -gx SHELL /bin/bash; matlab"
 alias mymatlab_shell "set -gx SHELL /bin/bash; matlab -nosplash -nodesktop"
 alias cords pip
 source $HOME/.config/fish/less_colours.fish
-source $HOME/.config/fish/alias_vars.fish
 set -gx TERM xterm-256color
 set -gx PATH $PATH $HOME/.local/bin
 set -gx TEXINPUTS ".:$HOME/mylatex:$HOME/mylatex/tikz-dsp:$TEXINPUTS"
 set -gx BIBINPUTS "$HOME/mylatex:$BIBINPUTS"
 set -gx BSTINPUTS "$HOME/mylatex:$BSTINPUTS"
+
+# Load in host specific environment variables
+switch (hostname)
+case yoshi
+    source $HOME/.config/fish/alias_vars_yoshi.fish
+case mario
+    source $HOME/.config/fish/alias_vars_mario.fish
+case hazza 
+    source $HOME/.config/fish/alias_vars_hazza.fish
+case glen 
+    source $HOME/.config/fish/alias_vars_glen.fish
+case *
+    source $HOME/.config/fish/alias_vars_blank.fish
+end
 
 function pycscope
     find . -path './venv' -prune -o -name '*.py*' -print > cscope.files

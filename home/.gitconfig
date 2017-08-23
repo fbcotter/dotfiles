@@ -193,4 +193,4 @@
 	clean = ~/repos/toobaz/ipynb_output_filter/ipynb_output_filter.py
 	smudge = cat
 [credential]
-	helper = osxkeychain
+	helper = cache --timeout=3600
