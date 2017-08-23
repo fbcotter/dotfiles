@@ -40,3 +40,10 @@ Host pi
 Host *.onion
     ProxyCommand connect -R remote -5 -S 127.0.0.1:9050 %h %p
     ForwardX11 yes
+
+Host cbas
+    HostName 40.68.83.154
+    User cbas_dev
+    ForwardX11 yes
+    LocalForward 20000 localhost:20000
+    LocalForward 20001 localhost:20001
