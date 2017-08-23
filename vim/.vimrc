@@ -180,7 +180,7 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:jedi#auto_vim_configuration = 0
 set completeopt=menuone,longest
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 1
+let g:jedi#show_call_signatures = 0
 " augroup previewWindowPosition
    " au!
    " autocmd BufWinEnter * call PreviewWindowPosition()

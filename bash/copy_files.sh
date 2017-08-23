@@ -34,23 +34,10 @@ echo "Symlinking functions"
 makesymlink $MYDIR/bash_functions $BASHDIR/.bash_functions
 
 # Make a link to the alias and environment variables file
-HOSTNAME=$(hostname)
-case $HOSTNAME in
-    (mario) 
-        echo "Host detected as mario. Copying the mario aliases file"
-        makesymlink $MYDIR/alias_vars_mario $BASHDIR/.bash_host_alias;;
-    (yoshi) 
-        echo "Host detected as yoshi. Copying the yoshi aliases file"
-        makesymlink $MYDIR/alias_vars_yoshi $BASHDIR/.bash_host_alias;;
-    (Glen) 
-        echo "Host detected as Glen. Copying the Glen aliases file"
-        makesymlink $MYDIR/alias_vars_glen $BASHDIR/.bash_host_alias;;
-    (hazza) 
-        echo "Host detected as hazza. Copying the hazza aliases file"
-        makesymlink $MYDIR/alias_vars_hazza $BASHDIR/.bash_host_alias;;
-    (*) 
-        echo "Warning - Undefined Hostname. Blank alias file copied" && \
-        makesymlink $MYDIR/alias_vars_blank $BASHDIR/.bash_host_alias;;
-esac
+makesymlink $MYDIR/alias_vars_mario $BASHDIR/.alias_vars_mario
+makesymlink $MYDIR/alias_vars_yoshi $BASHDIR/.alias_vars_yoshi
+makesymlink $MYDIR/alias_vars_glen $BASHDIR/.alias_vars_glen
+makesymlink $MYDIR/alias_vars_hazza $BASHDIR/.alias_vars_hazza
+makesymlink $MYDIR/alias_vars_blank $BASHDIR/.alias_vars_blank
 
 

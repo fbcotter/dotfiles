@@ -24,29 +24,34 @@ makesymlink $MYDIR/config.fish $FISHDIR/config.fish
 
 # Make a link to the alias and environment variables file
 HOSTNAME=$(hostname)
-case $HOSTNAME in
-    (mario) 
-        echo "Host detected as mario. Copying the mario aliases file"
-        makesymlink $MYDIR/alias_vars_mario.fish $FISHDIR/alias_vars.fish;;
-    (yoshi) 
-        echo "Host detected as yoshi. Copying the yoshi aliases file"
-        makesymlink $MYDIR/alias_vars_yoshi.fish $FISHDIR/alias_vars.fish;;
-    (luigi) 
-        echo "Host detected as luigi. Copying the luigi aliases file"
-        makesymlink $MYDIR/alias_vars_luigi.fish $FISHDIR/alias_vars.fish;;
-    (luigi2) 
-        echo "Host detected as luigi2. Copying the luigi2 aliases file"
-        makesymlink $MYDIR/alias_vars_luigi2.fish $FISHDIR/alias_vars.fish;;
-    (Glen) 
-        echo "Host detected as Glen. Copying the Glen aliases file"
-        makesymlink $MYDIR/alias_vars_glen.fish $FISHDIR/alias_vars.fish;;
-    (hazza) 
-        echo "Host detected as hazza. Copying the hazza aliases file"
-        makesymlink $MYDIR/alias_vars_hazza.fish $FISHDIR/alias_vars.fish;;
-    (*) 
-        echo "Warning - Unkown Hostname. Blank alias file copied" && \
-        makesymlink $MYDIR/alias_vars_blank.fish $FISHDIR/alias_vars.fish;;
-esac
+makesymlink $MYDIR/alias_vars_mario.fish $FISHDIR/alias_vars_mario.fish
+makesymlink $MYDIR/alias_vars_yoshi.fish $FISHDIR/alias_vars_yoshi.fish
+makesymlink $MYDIR/alias_vars_glen.fish $FISHDIR/alias_vars_glen.fish
+makesymlink $MYDIR/alias_vars_hazza.fish $FISHDIR/alias_vars_hazza.fish
+makesymlink $MYDIR/alias_vars_blank.fish $FISHDIR/alias_vars_blank.fish
+# case $HOSTNAME in
+    # (mario) 
+        # echo "Host detected as mario. Copying the mario aliases file"
+        # makesymlink $MYDIR/alias_vars_mario.fish $FISHDIR/alias_vars.fish;;
+    # (yoshi) 
+        # echo "Host detected as yoshi. Copying the yoshi aliases file"
+        # makesymlink $MYDIR/alias_vars_yoshi.fish $FISHDIR/alias_vars.fish;;
+    # (luigi) 
+        # echo "Host detected as luigi. Copying the luigi aliases file"
+        # makesymlink $MYDIR/alias_vars_luigi.fish $FISHDIR/alias_vars.fish;;
+    # (luigi2) 
+        # echo "Host detected as luigi2. Copying the luigi2 aliases file"
+        # makesymlink $MYDIR/alias_vars_luigi2.fish $FISHDIR/alias_vars.fish;;
+    # (Glen) 
+        # echo "Host detected as Glen. Copying the Glen aliases file"
+        # makesymlink $MYDIR/alias_vars_glen.fish $FISHDIR/alias_vars.fish;;
+    # (hazza) 
+        # echo "Host detected as hazza. Copying the hazza aliases file"
+        # makesymlink $MYDIR/alias_vars_hazza.fish $FISHDIR/alias_vars.fish;;
+    # (*) 
+        # echo "Warning - Unkown Hostname. Blank alias file copied" && \
+        # makesymlink $MYDIR/alias_vars_blank.fish $FISHDIR/alias_vars.fish;;
+# esac
 
 # Make a link to the less colours file
 echo "Symlinking less_colours.fish to fish"

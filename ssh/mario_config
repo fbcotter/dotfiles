@@ -41,3 +41,10 @@ Host luigi
     HostName luigi.westeurope.cloudapp.azure.com
     User fbc23
 
+Host cbas
+    HostName 40.68.83.154
+    User cbas_dev
+    ForwardX11 yes
+    LocalForward 20000 localhost:20000
+    LocalForward 20001 localhost:20001
+
