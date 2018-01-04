@@ -6,5 +6,6 @@ set -gx LD_LIBRARY_PATH "$LD_LIBRARY_PATH:$HOME/code/cuda8.0/cudnn6.0/lib64"
 set -gx HOME "/scratch/fbc23"
 set -gx PYENV_ROOT "$HOME/.pyenv"
 set -gx PATH $PYENV_ROOT/bin $CUDA_HOME/bin/ $PATH
+set -gx PYENV_VIRTUALENV_DISABLE_PROMPT 1
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)
