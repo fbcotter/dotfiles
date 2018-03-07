@@ -4,25 +4,10 @@ Host yoshi
     ForwardX11 yes
     ForwardX11Trusted yes
     SendEnv LC_COLORS
-
-Host azure
-    HostName luigi.westeurope.cloudapp.azure.com
-    User fbc23
-    LocalForward 3389 localhost:3389
-    LocalForward 3390 localhost:3390
-    LocalForward 5900 localhost:5900
-    LocalForward 5901 localhost:5901
-    LocalForward 28888 localhost:8888
-    LocalForward 28889 localhost:8889
-    LocalForward 26006 localhost:6006
-
-Host luigi 
-    HostName luigi.westeurope.cloudapp.azure.com
-    User fbc23
-
-Host luigi2 
-    HostName luigi2.westeurope.cloudapp.azure.com
-    User fbc23
+    LocalForward 20000 localhost:20000
+    LocalForward 20001 localhost:20001
+    LocalForward 20002 localhost:20002
+    LocalForward 28888 localhost:28888
 
 Host mario
     LocalForward 10000 localhost:10000
@@ -38,8 +23,47 @@ Host mario
     SendEnv LC_COLORS, LC_SSH_LOGIN
 
 Host cbas
-    HostName 40.114.245.128
+    HostName 40.68.83.154
     User cbas_dev
     ForwardX11 yes
-    LocalForward 20000 localhost:20000
-    LocalForward 20001 localhost:20001
+    LocalForward 30000 localhost:30000
+    LocalForward 30001 localhost:30001
+    LocalForward 30002 localhost:30002
+    SendEnv LC_COLORS, LC_SSH_LOGIN, LC_USER
+
+Host test2
+    HostName maurice.eng.cam.ac.uk
+    ProxyCommand ssh -t -q -W %h:%p fbc23@gate.eng.cam.ac.uk
+    User test2
+
+Host tomjon
+    HostName tomjon.eng.cam.ac.uk
+    ProxyCommand ssh -t -q -W %h:%p kh525@gate.eng.cam.ac.uk
+    User kuan
+    
+Host *.onion
+    ProxyCommand nc -xlocalhost:9050 -X5 %h %p
+
+Host ccg
+    HostName ec2-34-214-195-101.us-west-2.compute.amazonaws.com
+    User ubuntu
+    ForwardX11 yes
+    LocalForward 30000 localhost:30000
+    LocalForward 30001 localhost:30001
+    LocalForward 30002 localhost:30002
+    IdentityFile ~/.ssh/techteam.pem
+    SendEnv LC_COLORS, LC_SSH_LOGIN, LC_USER
+    
+Host ccgcompute
+    # HostName ec2-34-242-255-122.eu-west-1.compute.amazonaws.com
+    User ubuntu
+    Port 22
+    IdentityFile ~/.ssh/techteam_europe.pem
+    ProxyCommand ~/bin/connect_dyn_ccgcompute.sh %p
+    
+Host ccggpus
+    # HostName ec2-34-212-32-237.us-west-2.compute.amazonaws.com
+    User ubuntu
+    Port 22
+    IdentityFile ~/.ssh/techteam.pem
+    ProxyCommand ~/bin/connect_dyn_ccggpu.sh %p

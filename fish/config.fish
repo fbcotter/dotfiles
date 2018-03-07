@@ -4,7 +4,7 @@ if not status --is-interactive
 end
 
 if test -z "$SSH_ENV"
-    setenv SSH_ENV $HOME/.ssh/environment
+    set -gx SSH_ENV "$HOME/.ssh/environment"
 end
 
 # Start ssh agent
@@ -75,7 +75,7 @@ case mario
     source $HOME/.config/fish/alias_vars_mario.fish
 case hazza 
     source $HOME/.config/fish/alias_vars_hazza.fish
-case glen 
+case Glen 
     source $HOME/.config/fish/alias_vars_glen.fish
 case *
     source $HOME/.config/fish/alias_vars_blank.fish

@@ -1,99 +1,96 @@
 % Allow latex commands
 \usepackage{ltxcmds}
 
-\usepackage[a4paper, hmargin=4cm, vmargin=4cm]{geometry}
-\listfiles
-\usepackage{listings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Layout - comment out if using another style
+% \usepackage[a4paper, hmargin=4cm, vmargin=4cm]{geometry}
+% \usepackage{afterpage}
+% \listfiles
+% \usepackage{listings}
+% Add colour to your text and images
+%\usepackage{color} 
+% Allow us to easily customize page setup
+% \usepackage{fancyhdr}
+%\sloppy
+%%%%% Fancyhdr options %%%%%%%
+% This clears old style settings
+% \fancyhead{}
+% \fancyfoot{}
+% \rfoot{\thepage}
+% \pagestyle{fancy}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+%The structure is: \iffloatpage{value for float page}{value for other pages}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Package for displaying algorithms in a document as pseudo code
-\usepackage{algorithm2e} % Replaced the algorithm package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Other misc packages
+\usepackage{ifpdf}
+\usepackage{pdflscape}
+\usepackage[table]{xcolor}
+\usepackage{xspace} % for putting spaces after macros
+% Use natbib for bibliography type
+\usepackage[numbers]{natbib}
+%\usepackage{babel}  % For multilingual support
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Have multiple rows per column in a table
-\usepackage{multirow}
-
-
-% Package for having nice bold and uppercase characters
-% in formulae
-% Already loaded by the PHD thesis class
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math options
+\usepackage{bm,bbm}
+\usepackage{mathtools} % Fixes some bugs in amsmath
+\usepackage{amssymb}
 % \usepackage{mathptmx} % Replaced the times package
 % Keep the old calligraphic math font
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Add colour to your text and images
-% Already loaded by the PHD thesis class
-%\usepackage{color} 
-
-% Allow us to easily customize page setup
-% The fancyhdr package was already defined in the class
-\usepackage{fancyhdr}
-%%%%% Fancyhdr options %%%%%%%
-% This clears old style settings
-\fancyhead{}
-\fancyfoot{}
-\rfoot{\thepage}
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-%The structure is: \iffloatpage{value for float page}{value for other pages}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{afterpage}
-
-% Set sloppy line breaks
-%\sloppy
-
-% Other misc packages
-\usepackage{ifpdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure, Tables and Equations
+% Use pdftex option for graphicx if we are a pdf
+\usepackage{subfig}
 \usepackage[labelfont=bf,textfont=it]{caption}
-\usepackage{mathtools} % Fixes some bugs in amsmath
-\usepackage{amssymb}
-\usepackage{bm,bbm}
-\usepackage{pdflscape}
 \usepackage{multicol}
 \usepackage{booktabs} % for top and bottom rules in tables
 \usepackage{tabularx} % for variable width columns in tables
 \usepackage{multirow}
-\usepackage[table]{xcolor}
-\usepackage{xspace} % for putting spaces after macros
-%%%%%%%% Some Table Options %%%%%%%%%%%%%%
-% define "struts", as suggested by Claudio Beccari in
-% %    a piece in TeX and TUG News, Vol. 2, 1993.
-\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
-\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\usepackage{babel}  % For multilingual support
-
 \ifpdf
    \usepackage[pdftex]{graphicx}
 \else
    \usepackage{graphicx}
 \fi
-\usepackage{subfig}
 \usepackage[export]{adjustbox}[2011/08/13]
 % Set equation numbers <chapter>.<section>.<index>
 \numberwithin{equation}{section} 
+% Prevent line breaking for inline equations 
+% by setting the cost of it very high
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+% define "struts", as suggested by Claudio Beccari in
+% %    a piece in TeX and TUG News, Vol. 2, 1993.
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Use natbib for bibliography type
-\usepackage[numbers]{natbib}
 
-% Prevent line breaking for inline equations by setting the cost of it very
-% high
-%\binoppenalty=\maxdimen
-%\relpenalty=\maxdimen
-
-% Include tikz
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Include tikz and some subpackages
 \usepackage{tikz,pgfplots}
 \usetikzlibrary{matrix,positioning,arrows}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{calc}
-% \usetikzlibrary{external}\tikzexternalize         % Allow tikz images to be
-                                                  % compiled once
-% Make examples in your document
+% Allow tikz images to be compiled once
+% \usetikzlibrary{external}\tikzexternalize         
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add ability for algorithms and examples in your document
+% Package for displaying algorithms in a document as pseudo code
+\usepackage{algorithm2e} % Replaced the algorithm package
 \usepackage{amsthm}
-%\usepackage{shadethm}
-%\theoremstyle{definition}
-%\newshadetheorem{exmp}{Example}[section]
-%\definecolor{shadethmcolor}{HTML}{EDF8FF}
 \usepackage{mdframed}
 \newmdtheoremenv[
   hidealllines=true,
@@ -106,17 +103,18 @@
   skipabove=\baselineskip]{exmp}{Example}[section]
 \newmdenv[linecolor=blue, backgroundcolor=green!10,skipbelow=\baselineskip,
           skipabove=\baselineskip]{goals}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% Allow hyperlinks in our document. Redefine the section names to use the
-% squigly S
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some Hyperref Options 
 \usepackage{nameref}
 \usepackage{hyperref}
-%%%%%%%%% Some Hyperref Options %%%%%%%%%%
 \hypersetup{%
   colorlinks   = true,
   citecolor    = blue  
 }
+% Allow hyperlinks in our document. Redefine 
+% the section names to use the squigly S
 \renewcommand{\sectionautorefname}{\S}
 \renewcommand{\subsectionautorefname}{\S}
 \renewcommand{\subsubsectionautorefname}{\S}
@@ -125,8 +123,3 @@
 \newcommand{\subfigureautorefname}{\figureautorefname}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{array}
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\renewcommand\rmdefault{hpv}
