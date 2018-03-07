@@ -98,3 +98,6 @@ export CLICOLOR=1
 #export LSCOLORS=ExFxBxDxCxegedabagacad
 eval $(dircolors ~/.dircolors)
 export TERM=xterm-256color
+
+# added by Anaconda3 installer
+export PATH="/scratch/fbc23/anaconda3/bin:$PATH"
