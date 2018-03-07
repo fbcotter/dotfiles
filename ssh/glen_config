@@ -44,3 +44,26 @@ Host tomjon
 Host *.onion
     ProxyCommand nc -xlocalhost:9050 -X5 %h %p
 
+Host ccg
+    HostName ec2-34-214-195-101.us-west-2.compute.amazonaws.com
+    User ubuntu
+    ForwardX11 yes
+    LocalForward 30000 localhost:30000
+    LocalForward 30001 localhost:30001
+    LocalForward 30002 localhost:30002
+    IdentityFile ~/.ssh/techteam.pem
+    SendEnv LC_COLORS, LC_SSH_LOGIN, LC_USER
+    
+Host ccgcompute
+    # HostName ec2-34-242-255-122.eu-west-1.compute.amazonaws.com
+    User ubuntu
+    Port 22
+    IdentityFile ~/.ssh/techteam_europe.pem
+    ProxyCommand ~/bin/connect_dyn_ccgcompute.sh %p
+    
+Host ccggpus
+    # HostName ec2-34-212-32-237.us-west-2.compute.amazonaws.com
+    User ubuntu
+    Port 22
+    IdentityFile ~/.ssh/techteam.pem
+    ProxyCommand ~/bin/connect_dyn_ccggpu.sh %p
