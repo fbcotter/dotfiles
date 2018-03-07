@@ -42,15 +42,17 @@ set -g theme_hide_hostname no
 # Turn on vim bindings
 # fish -v outputted to stderr on some of my machines??
 # Hence the 2>&1
-if fish -v 2>&1 | grep 2.[0-2] > /dev/null 
-    fish_vi_mode
-else
-    fish_vi_key_bindings
-end
+# if fish -v 2>&1 | grep 2.[0-2] > /dev/null 
+    # fish_vi_mode
+# else
+    # fish_vi_key_bindings
+# end
 
 # Some aliases/environment variables
 set -gx EDITOR vim
 alias gitlog "git log --graph --decorate --oneline --all"
+alias cp "cp -i"
+alias mv "mv -i"
 alias latexmk "latexmk -pdf -pvc"
 alias gtree "tree -a -I '.git|venv|*.egg-info|build|.cache|__pycache__|.ipynb_checkpoints|dist'"
 alias mymatlab "set -gx SHELL /bin/bash; matlab"
@@ -62,6 +64,8 @@ set -gx PATH $PATH $HOME/.local/bin
 set -gx TEXINPUTS ".:$HOME/mylatex:$HOME/mylatex/tikz-dsp:$TEXINPUTS"
 set -gx BIBINPUTS "$HOME/mylatex:$BIBINPUTS"
 set -gx BSTINPUTS "$HOME/mylatex:$BSTINPUTS"
+set -gx MANPATH (manpath -q)
+set -gx MANPATH "$MANPATH:$HOME/man"
 
 # Load in host specific environment variables
 switch (hostname)
@@ -81,3 +85,6 @@ function pycscope
     find . -path './venv' -prune -o -name '*.py*' -print > cscope.files
     cscope -bR
 end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/scratch/fbc23/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/scratch/fbc23/google-cloud-sdk/path.fish.inc'; else; . '/scratch/fbc23/google-cloud-sdk/path.fish.inc'; end; end
