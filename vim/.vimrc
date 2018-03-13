@@ -64,8 +64,10 @@ if has('nvim')
 else
     set t_Co=256
     colorscheme material-monokai
-    hi Comment ctermfg=Gray
+    " hi Comment ctermfg=Gray
     hi Visual ctermfg=None ctermbg=Gray
+    hi Normal ctermbg=None
+    hi nonText ctermbg=None
     hi pythonDot ctermfg=Red
     " syn region FCall matchgroup=FName start='[[:alpha:]_]\i*\s*(' end=')' contains=FCall,FCallKeyword
     " syn match FCallKeyword /\i*\ze\s*=[^=]/ contained
