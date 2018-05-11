@@ -16,7 +16,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 "" Plugin 'wincent/Command-T'
 "Plugin 'vim-utils/vim-man'
 Plugin 'tpope/vim-fugitive'
