@@ -39,6 +39,7 @@ Plugin 'junegunn/vim-peekaboo'
 Plugin 'hdima/python-syntax'
 Plugin 'skielbasa/vim-material-monokai'
 Plugin 'ayu-theme/ayu-vim'
+Plugin 'taglist.vim'
 
 " Final line of plugins
 call vundle#end()
@@ -63,22 +64,21 @@ if has('nvim')
     colorscheme ayu
 else
     set t_Co=256
-    colorscheme material-monokai
-    " hi Comment ctermfg=Gray
-    hi Visual ctermfg=None ctermbg=Gray
-    hi Normal ctermbg=None
-    hi nonText ctermbg=None
-    hi pythonDot ctermfg=Red
-    " syn region FCall matchgroup=FName start='[[:alpha:]_]\i*\s*(' end=')' contains=FCall,FCallKeyword
-    " syn match FCallKeyword /\i*\ze\s*=[^=]/ contained
-    " hi FCallKeyword ctermfg=yellow
-    " hi FName ctermfg=blue
-    " set background=dark
-    "let colors_env=$LC_COLORS
-    ""if colors_env == 'light'
-        ""set background=light
-    ""endif
-    "colorscheme solarized
+    let colors_env=$LC_COLORS
+    if colors_env == 'light'
+        set background=light
+        colorscheme solarized
+        hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
+    else
+        colorscheme material-monokai
+        set background=dark
+        hi Comment ctermfg=Gray
+        hi Visual ctermfg=None ctermbg=Gray
+        hi Normal ctermbg=None
+        hi nonText ctermbg=None
+        hi pythonDot ctermfg=Red
+        hi MatchParen cterm=bold ctermfg=7 ctermbg=6
+    endif
 endif
 
  hi TagBarSignature ctermfg=Gray
@@ -92,7 +92,12 @@ endif
  nnoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
  nnoremap <silent> [L :call NextIndent(0, 0, 1, 1)<CR>
 
- nmap <F8> :TagbarToggle<CR>
+ nmap <F9> :TagbarToggle<CR>
+ let g:tagbar_width = 40
+ let g:tagbar_sort = 0
+
+ let g:peekaboo_window = ":vert bo 50new"
+
 " """"""""""""""""""""" Some bookmark settings """""""""""""""""""""""""""""
  nnoremap <C-b> :BookmarkToggle<CR>
  nnoremap <C-x> :BookmarkNext<CR>
@@ -163,6 +168,11 @@ endif
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   map <F3> :NERDTreeToggle<CR>
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  """"""""""""""""""""" Some Taglist settings"""""""""""""""""""""""""""""
+  nmap <F8> :TlistToggle<CR>
+  let g:Tlist_Exit_OnlyWindow = 1
+  let g:Tlist_Use_Right_Window = 1
+  let g:Tlist_WinWidth = 50
 
  """"""""""""""""""""" Some vim-markdown settings"""""""""""""""""""""""""""""
  let g:vim_markdown_folding_disabled = 1
@@ -301,6 +311,16 @@ endif
  set showmatch
  map <leader><space> :let @/=''<cr> " clear search
 
+onoremap an :<c-u>call <SID>NextTextObject('a')<cr>
+xnoremap an :<c-u>call <SID>NextTextObject('a')<cr>
+onoremap in :<c-u>call <SID>NextTextObject('i')<cr>
+xnoremap in :<c-u>call <SID>NextTextObject('i')<cr>
+
+function! s:NextTextObject(motion)
+    echo
+    let c = nr2char(getchar())
+    exe "normal! f".c."v".a:motion.c
+endfunction
 " " " Remap help key.
 " inoremap <F1> <ESC>:set invfullscreen<CR>a
 " nnoremap <F1> :set invfullscreen<CR>
