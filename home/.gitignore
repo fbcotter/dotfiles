@@ -84,3 +84,6 @@ logdir/
 # Cscope files
 cscope.out
 cscope.files
+
+# Examples and scratch folders
+scratch
