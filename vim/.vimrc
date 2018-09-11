@@ -20,6 +20,7 @@ Plugin 'altercation/vim-colors-solarized'
 "" Plugin 'wincent/Command-T'
 "Plugin 'vim-utils/vim-man'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sleuth'
 Plugin 'chrisbra/Recover.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'    
@@ -40,6 +41,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'skielbasa/vim-material-monokai'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'taglist.vim'
+Plugin 'gotcha/vimpdb'
 
 " Final line of plugins
 call vundle#end()
@@ -54,7 +56,6 @@ let g:man_width = 80
 filetype plugin indent on
 
 syntax enable
-set background=dark
 " Turn on syntax highlighting
 let g:python_highlight_all=1
 
@@ -65,11 +66,7 @@ if has('nvim')
 else
     set t_Co=256
     let colors_env=$LC_COLORS
-    if colors_env == 'light'
-        set background=light
-        colorscheme solarized
-        hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
-    else
+    if colors_env == 'dark'
         colorscheme material-monokai
         set background=dark
         hi Comment ctermfg=Gray
@@ -78,6 +75,10 @@ else
         hi nonText ctermbg=None
         hi pythonDot ctermfg=Red
         hi MatchParen cterm=bold ctermfg=7 ctermbg=6
+    else
+        set background=light
+        colorscheme solarized
+        hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
     endif
 endif
 
@@ -126,7 +127,7 @@ endif
  " """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
   let g:syntastic_python_checkers = ['flake8']
   " let g:syntastic_python_flake8_exec = '/usr/bin/python3'
-  let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731,E231,E226,C901"
+  let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731,E231,E226,C901,E741"
   let g:syntastic_python_flake8_args = options
   let g:syntastic_tex_checkers = ['lacheck']
   "let g:statline_syntastic = 0
@@ -241,7 +242,7 @@ endif
  " set modelines=0
 
  " " Show line numbers
- set number
+ set number relativenumber
 
  " " Show file stats
  set ruler
@@ -262,9 +263,6 @@ endif
  set softtabstop=4
  set expandtab
  set noshiftround
-
- " "Special options for some files
- autocmd Filetype tex setlocal ts=2 sw=2 sts=2 
 
  " " Cursor motion
  set scrolloff=3
@@ -290,9 +288,14 @@ endif
  " " Rendering
  set ttyfast
 
- " " Turn on spell checking
- " set spell
+ " Set spell checking properties, but turn off for most file types (will turn on
+ " in ftplugin)
+ set nospell
  set spelllang=en_gb
+ hi clear SpellBad
+ hi SpellBad cterm=underline
+ syn match myExCapitalWords +\<\w*[A-Z]\S*\>|'s+ contains=@NoSpell
+
 
  " " Status bar
  set laststatus=2
@@ -321,6 +324,16 @@ function! s:NextTextObject(motion)
     let c = nr2char(getchar())
     exe "normal! f".c."v".a:motion.c
 endfunction
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
 " " " Remap help key.
 " inoremap <F1> <ESC>:set invfullscreen<CR>a
 " nnoremap <F1> :set invfullscreen<CR>

@@ -1,0 +1,1 @@
+/scratch/fbc23/repos/fbcotter/dotfiles/vim/tex.vim
