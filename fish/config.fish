@@ -61,7 +61,7 @@ alias cords pip
 source $HOME/.config/fish/less_colours.fish
 set -gx TERM xterm-256color
 set -gx PATH $PATH $HOME/.local/bin
-set -gx TEXINPUTS ".:$HOME/mylatex:$HOME/mylatex/tikz-dsp:$TEXINPUTS"
+set -gx TEXINPUTS ".:$HOME/mylatex:$HOME/mylatex/tikz-dsp:$HOME/mylatex/coverletter:$TEXINPUTS"
 set -gx BIBINPUTS "$HOME/mylatex:$BIBINPUTS"
 set -gx BSTINPUTS "$HOME/mylatex:$BSTINPUTS"
 set -gx MANPATH (manpath -q)
