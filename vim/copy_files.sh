@@ -38,5 +38,9 @@ makesymlink $MYDIR/cscope.vim $HOME/.vim/cscope.vim
 
 # Copy ftplugin files
 mkdir -p ~/.vim/ftplugin
-makesymlink $MYDIR/python.vim $HOME/.vim/ftplugin/python.vim
-makesymlink $MYDIR/tex.vim $HOME/.vim/ftplugin/tex.vim
+makesymlink $MYDIR/ftplugin/python.vim $HOME/.vim/ftplugin/python.vim
+makesymlink $MYDIR/ftplugin/tex.vim $HOME/.vim/ftplugin/tex.vim
+makesymlink $MYDIR/ftplugin/cpp.vim $HOME/.vim/ftplugin/cpp.vim
+makesymlink $MYDIR/ftplugin/markdown.vim $HOME/.vim/ftplugin/markdown.vim
+makesymlink $MYDIR/ftplugin/rst.vim $HOME/.vim/ftplugin/rst.vim
+makesymlink $MYDIR/ftplugin/json.vim $HOME/.vim/ftplugin/json.vim

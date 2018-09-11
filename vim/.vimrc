@@ -41,14 +41,11 @@ Plugin 'hdima/python-syntax'
 Plugin 'skielbasa/vim-material-monokai'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'taglist.vim'
-Plugin 'gotcha/vimpdb'
+Plugin 'lervag/vimtex'
 
 " Final line of plugins
 call vundle#end()
 
-
-" Disable vimtex for normal vim (enable it in gvimrc)
-let g:vimtex_enabled=0
 " Set vim man width to 80
 let g:man_width = 80
 
@@ -59,27 +56,21 @@ syntax enable
 " Turn on syntax highlighting
 let g:python_highlight_all=1
 
-if has('nvim')
-    set termguicolors
-    let ayucolor="mirage"
-    colorscheme ayu
+set t_Co=256
+let colors_env=$LC_COLORS
+if colors_env == 'dark'
+    colorscheme material-monokai
+    set background=dark
+    hi Comment ctermfg=Gray
+    hi Visual ctermfg=None ctermbg=Gray
+    hi Normal ctermbg=None
+    hi nonText ctermbg=None
+    hi pythonDot ctermfg=Red
+    hi MatchParen cterm=bold ctermfg=7 ctermbg=6
 else
-    set t_Co=256
-    let colors_env=$LC_COLORS
-    if colors_env == 'dark'
-        colorscheme material-monokai
-        set background=dark
-        hi Comment ctermfg=Gray
-        hi Visual ctermfg=None ctermbg=Gray
-        hi Normal ctermbg=None
-        hi nonText ctermbg=None
-        hi pythonDot ctermfg=Red
-        hi MatchParen cterm=bold ctermfg=7 ctermbg=6
-    else
-        set background=light
-        colorscheme solarized
-        hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
-    endif
+    set background=light
+    colorscheme solarized
+    hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
 endif
 
  hi TagBarSignature ctermfg=Gray
@@ -99,6 +90,12 @@ endif
 
  let g:peekaboo_window = ":vert bo 50new"
 
+" """"""""""""""""""""" Some vimtex settings """""""""""""""""""""""""""""
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+"
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " """"""""""""""""""""" Some bookmark settings """""""""""""""""""""""""""""
  nnoremap <C-b> :BookmarkToggle<CR>
  nnoremap <C-x> :BookmarkNext<CR>
