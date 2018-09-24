@@ -59,14 +59,17 @@ let g:python_highlight_all=1
 set t_Co=256
 let colors_env=$LC_COLORS
 if colors_env == 'dark'
-    colorscheme material-monokai
+    colorscheme solarized
     set background=dark
-    hi Comment ctermfg=Gray
-    hi Visual ctermfg=None ctermbg=Gray
-    hi Normal ctermbg=None
-    hi nonText ctermbg=None
-    hi pythonDot ctermfg=Red
-    hi MatchParen cterm=bold ctermfg=7 ctermbg=6
+    hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
+    " colorscheme material-monokai
+    " set background=dark
+    " hi Comment ctermfg=Gray
+    " hi Visual ctermfg=None ctermbg=Gray
+    " hi Normal ctermbg=None
+    " hi nonText ctermbg=None
+    " hi pythonDot ctermfg=Red
+    " hi MatchParen cterm=bold ctermfg=7 ctermbg=6
 else
     set background=light
     colorscheme solarized
