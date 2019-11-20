@@ -1,3 +1,4 @@
+--recurse=yes
 --exclude=*.min.js
 --exclude=*.min.css
 --exclude=*.map
@@ -5,10 +6,11 @@
 --exclude=.sass-cache
 --exclude=vendors
 --exclude=.git
+--exclude=bzl-build/*
+--exclude=bazel-out/*
 
 
 --python-kinds=-i
 --langdef=js
 --langmap=js:.js
-
 
