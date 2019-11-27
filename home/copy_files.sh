@@ -17,12 +17,16 @@ function makesymlink {
     ln -s $1 $2
 }
 
-for file in .{ctags,functions,gitconfig,gitignore,inputrc,latexmkrc,screenrc,wgetrc,gitattributes,tmux.conf}
+for file in .{ctags,functions,gitconfig,gitignore,inputrc,latexmkrc,screenrc,wgetrc,gitattributes,tmux.conf,pylintrc}
 do
     [ -r "$MYDIR/$file" ] && [ -f "$MYDIR/$file" ] && \
         echo "Symlinking $file" && \
         makesymlink $MYDIR/$file $HOME/$file;
 done;
+echo "Symlinking flake8 options" 
+mkdir -p $HOME/.config
+makesymlink $MYDIR/flake8 $HOME/.config/flake8;
+
 unset file;
 
 # Copy matplotlibrc file

@@ -17,30 +17,25 @@ call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
-"" Plugin 'wincent/Command-T'
-"Plugin 'vim-utils/vim-man'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'chrisbra/Recover.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'    
 Plugin 'scrooloose/nerdtree'         
-Plugin 'MattesGroeger/vim-bookmarks' "See :help bookmarks
+Plugin 'MattesGroeger/vim-bookmarks' "See :help Bookmarks
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin '907th/vim-auto-save'
-"" Plugin 'Valloric/YouCompleteMe'
-"Plugin 'davidhalter/jedi-vim'
-"Plugin 'easymotion/vim-easymotion'
-"" Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'junegunn/vim-peekaboo'
 Plugin 'hdima/python-syntax'
 Plugin 'skielbasa/vim-material-monokai'
 Plugin 'ayu-theme/ayu-vim'
-Plugin 'taglist.vim'
+Plugin 'vim-scripts/BufOnly.vim'
 Plugin 'lervag/vimtex'
 
 " Final line of plugins
@@ -58,21 +53,11 @@ let g:python_highlight_all=1
 
 set t_Co=256
 let colors_env=$LC_COLORS
-if colors_env == 'dark'
-    colorscheme solarized
-    set background=dark
-    hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
-    " colorscheme material-monokai
-    " set background=dark
-    " hi Comment ctermfg=Gray
-    " hi Visual ctermfg=None ctermbg=Gray
-    " hi Normal ctermbg=None
-    " hi nonText ctermbg=None
-    " hi pythonDot ctermfg=Red
-    " hi MatchParen cterm=bold ctermfg=7 ctermbg=6
-else
+colorscheme solarized
+set background=light
+hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
+if colors_env == 'light'
     set background=light
-    colorscheme solarized
     hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
 endif
 
@@ -88,6 +73,7 @@ endif
  nnoremap <silent> [L :call NextIndent(0, 0, 1, 1)<CR>
 
  nmap <F9> :TagbarToggle<CR>
+ nnoremap <F5> :buffers<CR>:buffer<Space>
  let g:tagbar_width = 40
  let g:tagbar_sort = 0
 
@@ -101,9 +87,15 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " """"""""""""""""""""" Some bookmark settings """""""""""""""""""""""""""""
  nnoremap <C-b> :BookmarkToggle<CR>
+ nnoremap <C-i> :BookmarkAnnotate<CR>
  nnoremap <C-x> :BookmarkNext<CR>
  nnoremap <C-z> :BookmarkPrev<CR>
  nnoremap <C-g> :BookmarkShowAll<CR>
+ let g:bookmark_disable_ctrlp = 1
+ let g:bookmark_auto_close = 1
+ let g:bookmark_save_per_working_dir = 1
+ let g:bookmark_auto_save = 1
+ let g:bookmark_center = 1
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  """"""""""""""""""""" Some airline settings """""""""""""""""""""""""""""
  let g:airline#extensions#tabline#enabled = 1
@@ -127,7 +119,8 @@ let g:vimtex_view_general_options_latexmk = '--unique'
  " """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
   let g:syntastic_python_checkers = ['flake8']
   " let g:syntastic_python_flake8_exec = '/usr/bin/python3'
-  let options = "--max-complexity 11 --max-line-length=80 --ignore=E111,E114,E116,E306,E731,E231,E226,C901,E741"
+  " let options = "--max-complexity 11 --max-line-length=120 --ignore=E111,E114,E116,E306,E731,E231,E226,C901,E741"
+  let options = "--max-line-length=120 --select E,F,C9 --ignore=E226,E126"
   let g:syntastic_python_flake8_args = options
   let g:syntastic_tex_checkers = ['lacheck']
   "let g:statline_syntastic = 0
@@ -168,6 +161,10 @@ let g:vimtex_view_general_options_latexmk = '--unique'
   " Autoclose vim if only window open is nerdtree
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   map <F3> :NERDTreeToggle<CR>
+  map <F4> :NERDTreeFind<CR>
+  let g:NERDTreeWinSize = 40
+  let g:NERDTreeShowBookmarks=1
+  let g:NERDTreeBookmarksSort=0
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   """"""""""""""""""""" Some Taglist settings"""""""""""""""""""""""""""""
   nmap <F8> :TlistToggle<CR>
@@ -234,8 +231,12 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 " " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " " """""""""""""""""""""""""" Some ctrlP settings """""""""""""""""""""""""""
-" " let g:ctrlp_map = '<c-o>'
-" " let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<c-o>'
+let g:ctrlp_cmd = 'CtrlP'
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>r :CtrlPMRU<cr>
+let g:ctrlp_root_markers = ['.ctrlp']
 " " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
  " " Security
@@ -243,6 +244,9 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
  " " Show line numbers
  set number relativenumber
+
+ " " Show current file
+ nnoremap <leader>f :echo @%<CR>
 
  " " Show file stats
  set ruler
@@ -256,7 +260,7 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
  " " Whitespace
  set wrap
- set textwidth=80
+ set textwidth=120
  set formatoptions=tcqrn1
  set tabstop=4
  set shiftwidth=0 " Uses whatever tabstop value we have
