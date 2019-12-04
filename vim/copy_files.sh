@@ -26,7 +26,14 @@ do
 done;
 unset file;
 
-# Download vundle
+mkdir -p ~/.config/nvim
+makesymlink $MYDIR/init.vim $HOME/.config/nvim/init.vim
+
+# Download vim-plug for neovim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Download vundle for vim
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
     echo "Downloading Vundle for Vim"
     mkdir -p ~/.vim/bundle/Vundle.vim
@@ -44,3 +51,5 @@ makesymlink $MYDIR/ftplugin/cpp.vim $HOME/.vim/ftplugin/cpp.vim
 makesymlink $MYDIR/ftplugin/markdown.vim $HOME/.vim/ftplugin/markdown.vim
 makesymlink $MYDIR/ftplugin/rst.vim $HOME/.vim/ftplugin/rst.vim
 makesymlink $MYDIR/ftplugin/json.vim $HOME/.vim/ftplugin/json.vim
+mkdir -p ~/.config/nvim/after
+ln -s ~/.vim/ftplugin ~/.config/nvim/after/ftplugin

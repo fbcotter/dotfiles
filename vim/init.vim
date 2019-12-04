@@ -10,36 +10,38 @@ set shell=bash
 " Load the csope mappings file
 source $HOME/.vim/cscope.vim
 
+
 " TODO: Load plugins here (pathogen or vundle)
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=$HOME/.vim/bundle/Vundle.vim
+" call vundle#begin()
+call plug#begin()
 
 " let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'chrisbra/Recover.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'    
-Plugin 'scrooloose/nerdtree'         
-Plugin 'MattesGroeger/vim-bookmarks' "See :help Bookmarks
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'junegunn/vim-peekaboo'
-Plugin 'hdima/python-syntax'
-Plugin 'skielbasa/vim-material-monokai'
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'vim-scripts/BufOnly.vim'
-Plugin 'lervag/vimtex'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-rhubarb'
+Plug 'chrisbra/Recover.vim'
+" Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
+Plug 'scrooloose/nerdcommenter'    
+Plug 'scrooloose/nerdtree'         
+Plug 'MattesGroeger/vim-bookmarks' "See :help Bookmarks
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'junegunn/vim-peekaboo'
+Plug 'hdima/python-syntax'
+Plug 'skielbasa/vim-material-monokai'
+Plug 'ayu-theme/ayu-vim'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'lervag/vimtex'
 
 " Final line of plugins
-call vundle#end()
+call plug#end()
 
 " Set vim man width to 80
 let g:man_width = 80
@@ -54,11 +56,11 @@ let g:python_highlight_all=1
 set t_Co=256
 let colors_env=$LC_COLORS
 colorscheme solarized
+" set background=dark
 set background=light
 hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
-if colors_env == 'light'
-    set background=light
-    hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
+if colors_env == 'dark'
+    set background=dark
 endif
 
  hi TagBarSignature ctermfg=Gray
@@ -86,7 +88,7 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 "
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " """"""""""""""""""""" Some bookmark settings """""""""""""""""""""""""""""
- nnoremap <C-b> :BookmarkToggle<CR>
+ nnoremap <C-c> :BookmarkToggle<CR>
  nnoremap <C-i> :BookmarkAnnotate<CR>
  nnoremap <C-x> :BookmarkNext<CR>
  nnoremap <C-z> :BookmarkPrev<CR>
@@ -118,21 +120,16 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
  " """"""""""""""""""""" Some Syntastic settings"""""""""""""""""""""""""""""
   let g:syntastic_python_checkers = ['flake8']
-  " let g:syntastic_python_flake8_exec = '/usr/bin/python3'
-  " let options = "--max-complexity 11 --max-line-length=120 --ignore=E111,E114,E116,E306,E731,E231,E226,C901,E741"
   let options = "--max-line-length=120 --select E,F,C9 --ignore=E226,E126"
   let g:syntastic_python_flake8_args = options
   let g:syntastic_tex_checkers = ['lacheck']
-  "let g:statline_syntastic = 0
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
   let g:syntastic_always_populate_loc_list = 1
   " let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
   let g:syntastic_enable_highlighting = 1
   let g:syntastic_enable_signs = 1
+
   " Gutter symbols
   let g:syntastic_error_symbol = "✗"
   let g:syntastic_warning_symbol = "!"
@@ -141,6 +138,20 @@ let g:vimtex_view_general_options_latexmk = '--unique'
   " Easy cycling through errors 
   nnoremap <C-j> :lnext<CR>
   nnoremap <C-k> :lprev<CR>
+
+  " """"""""""""""""""""" Some ALE Settings """""""""""""""""""""""""""""""""
+  let g:ale_linters = {
+  \   'python': ['pylint', 'flake8'],
+  \}
+  " let g:ale_python_pylint_options = "--max-line-length=120 --select E,F,C9 --ignore=E226,E126"
+  " let g:ale_python_pylint_options = "--max-line-length=120"
+  let g:ale_sign_column_always = 0
+  let g:ale_sign_error = "✗"
+  let g:ale_sign_warning = "!"
+  let g:ale_sign_style_error = ":("
+  let g:ale_sign_style_warning = ":/"
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   """"""""""""""""""""" Some Nerdcommenter settings"""""""""""""""""""""""""""""
@@ -162,7 +173,7 @@ let g:vimtex_view_general_options_latexmk = '--unique'
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   map <F3> :NERDTreeToggle<CR>
   map <F4> :NERDTreeFind<CR>
-  let g:NERDTreeWinSize = 40
+  let g:NERDTreeWinSize = 50
   let g:NERDTreeShowBookmarks=1
   let g:NERDTreeBookmarksSort=0
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -182,54 +193,6 @@ let g:vimtex_view_general_options_latexmk = '--unique'
  let g:auto_save_events = ["CursorHold", "CursorHoldI", "CompleteDone", "InsertLeave", "TextChangedI"]
 " " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" " """"""""""""""""""""" Some YouCompleteMe settings """""""""""""""""""""""""
-" let g:ycm_server_python_interpreter='python'
-" " let g:ycm_autoclose_preview_window_after_completion=1
-" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-" let g:ycm_complete_in_comments = 0 " Completion in comments
-" let g:ycm_complete_in_strings = 0 " Completion in string
-" let g:ycm_filetype_blacklist = {
-    " \ 'markdown' : 1,
-    " \ 'rst'      : 1,
-    " \ 'tex'      : 1
-" \}
-" map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" " """"""""""""""""""""""""" Some jedi-vim settings """"""""""""""""""""""""""
-" " let g:jedi#auto_vim_configuration = 0
-" " set completeopt=menuone,longest
-" " let g:jedi#popup_on_dot = 0
-" " let g:jedi#show_call_signatures = 0
-" " " augroup previewWindowPosition
-   " " " au!
-   " " " autocmd BufWinEnter * call PreviewWindowPosition()
-" " " augroup END
-" " " function! PreviewWindowPosition()
-   " " " if &previewwindow
-      " " " wincmd L
-   " " " endif
-" " " endfunction 
-" " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" " """""""""""""""""""""""" Some easymotion settings """""""""""""""""""""""""
-" " " <Leader>f{char} to move to {char}
-" " map  <Leader>f <Plug>(easymotion-bd-f)
-" " nmap <Leader>f <Plug>(easymotion-overwin-f)
-" " " s{char}{char} to move to {char}{char}
-" " nmap s <Plug>(easymotion-overwin-f2)
-" " " Move to line
-" " map <Leader>L <Plug>(easymotion-bd-jk)
-" " nmap <Leader>L <Plug>(easymotion-overwin-line)
-" " " Move to word
-" " map  <Leader>w <Plug>(easymotion-bd-w)
-" " nmap <Leader>w <Plug>(easymotion-overwin-w)
-" " map  <Leader>/ <Plug>(easymotion-sn)
-" " omap <Leader>/ <Plug>(easymotion-tn)
-" " " map  n <Plug>(easymotion-next)
-" " " map  N <Plug>(easymotion-prev)
-" " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " " """""""""""""""""""""""""" Some ctrlP settings """""""""""""""""""""""""""
 let g:ctrlp_map = '<c-o>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -237,7 +200,10 @@ nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>r :CtrlPMRU<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
+
 " " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyGrepRecursive = 1
+let g:EasyGrepFilesToExclude=".git,*.swp,tags"
 
  " " Security
  " set modelines=0
@@ -337,58 +303,3 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
-
-" " " Remap help key.
-" inoremap <F1> <ESC>:set invfullscreen<CR>a
-" nnoremap <F1> :set invfullscreen<CR>
-" vnoremap <F1> :set invfullscreen<CR>
-
-" " " Textmate holdouts
-
-" " " Formatting
-" " map <leader>q gqip
-
-" " " Visualize tabs and newlines
-" " set listchars=tab:▸\ ,eol:¬
-" " " Uncomment this to enable by default:
-" " " set list " To enable by default
-" " " Or use your leader key + l to toggle on/off
-" " map <leader>l :set list!<CR> " Toggle tabs and EOL
-
-" " noh
-
-" " " Allow scrolling
-" set mouse=a
-
-" " Jump to the next or previous line that has the same level or a lower
-" " level of indentation than the current line.
-" "
-" " exclusive (bool): true: Motion is exclusive
-" " false: Motion is inclusive
-" " fwd (bool): true: Go to next line
-" " false: Go to previous line
-" " lowerlevel (bool): true: Go to line with lower indentation level
-" " false: Go to line with the same indentation level
-" " skipblanks (bool): true: Skip blank lines
-" " false: Don't skip blank lines
-" function! NextIndent(exclusive, fwd, lowerlevel, skipblanks)
-  " let line = line('.')
-  " let column = col('.')
-  " let lastline = line('$')
-  " let indent = indent(line)
-  " let stepvalue = a:fwd ? 1 : -1
-  " while (line > 0 && line <= lastline)
-    " let line = line + stepvalue
-    " if ( ! a:lowerlevel && indent(line) == indent ||
-          " \ a:lowerlevel && indent(line) < indent)
-      " if (! a:skipblanks || strlen(getline(line)) > 0)
-        " if (a:exclusive)
-          " let line = line - stepvalue
-        " endif
-        " exe line
-        " exe "normal " column . "|"
-        " return
-      " endif
-    " endif
-  " endwhile
-" endfunction

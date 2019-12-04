@@ -102,6 +102,7 @@
 	precomposeunicode = false
 	autocrlf = input 
 	safecrlf = false
+	editor = nvim
 
 [color]
 
@@ -153,6 +154,7 @@
 
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
+	tool = vimdiff
 
 [push]
 
@@ -195,3 +197,14 @@
 	smudge = cat
 [credential]
 	helper = cache --timeout=3600
+[filter "lfs"]
+    process = git-lfs filter-process --skip
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge --skip -- %f
+
+[log]
+  date = relative
+
+[format]
+  pretty = format:%C(auto,yellow)%h|%C(auto,magenta)% G? %C(auto,blue)|%>(12,trunc)%ad %C(auto,green)|%<(11,trunc)%aN| %C(auto,reset)%s%C(auto,red)% gD% D

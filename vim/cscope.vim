@@ -31,11 +31,11 @@ if has("cscope")
     """"""""""""" Standard cscope/vim boilerplate
 
     " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
-    set cscopetag
+    " set cscopetag
 
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
-    set csto=0
+    set csto=1
 
     " add any cscope database in current directory
     if filereadable("cscope.out")
@@ -97,12 +97,13 @@ if has("cscope")
 
     nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>	
     nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>	
-    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
-    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
+    " All of the below causes cscope to hang. Let's remove them
+    " nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>	
+    " nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>	
+    " nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>	
+    " nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
+    " nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    " nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
 
 
     " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
