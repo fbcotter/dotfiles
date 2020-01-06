@@ -202,8 +202,12 @@ nnoremap <leader>r :CtrlPMRU<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
 
 " " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyGrepRecursive = 1
-let g:EasyGrepFilesToExclude=".git,*.swp,tags"
+let g:EasyGrepRecursive = 1 
+let g:EasyGrepFilesToExclude=".git,*.swp,tags"                    
+set tags^=./.git/tags;
+nnoremap <leader>g :silent Ggrep! <cword><CR>
+autocmd QuickFixCmdPost *grep* cwindow
+
 
  " " Security
  " set modelines=0
