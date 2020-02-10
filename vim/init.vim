@@ -98,6 +98,12 @@ let g:vimtex_view_general_options_latexmk = '--unique'
  let g:bookmark_save_per_working_dir = 1
  let g:bookmark_auto_save = 1
  let g:bookmark_center = 1
+ let g:ctrlp_max_files=0
+ let g:ctrlp_custom_ignore = {
+    \ 'dir':  '[\/]\.(git|hg|svn)$',
+    \ 'file': '\.(exe|so|dll|DS_Store)$',
+    \ 'build': 'bazel-out$\|node_modules$',
+    \ }
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  """"""""""""""""""""" Some airline settings """""""""""""""""""""""""""""
  let g:airline#extensions#tabline#enabled = 1
@@ -202,18 +208,18 @@ nnoremap <leader>r :CtrlPMRU<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
 
 " " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyGrepRecursive = 1 
-let g:EasyGrepFilesToExclude=".git,*.swp,tags"                    
 set tags^=./.git/tags;
+let g:EasyGrepRecursive = 1
+let g:EasyGrepFilesToExclude=".git,*.swp,tags"
 nnoremap <leader>g :silent Ggrep! <cword><CR>
 autocmd QuickFixCmdPost *grep* cwindow
-
 
  " " Security
  " set modelines=0
 
  " " Show line numbers
- set number relativenumber
+ " set number relativenumber
+ set number
 
  " " Show current file
  nnoremap <leader>f :echo @%<CR>
@@ -258,6 +264,8 @@ autocmd QuickFixCmdPost *grep* cwindow
  if !exists(":Bd")
      command Bd bp | sp | bn | bd
  endif
+ set path+=**
+ " set wildmenu
 
  " " Rendering
  set ttyfast
@@ -307,3 +315,4 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+let g:solarized_termcolors=256
