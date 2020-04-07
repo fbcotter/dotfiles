@@ -161,7 +161,7 @@
 	# Use the Git 1.x.x default to avoid errors on machines with old Git
 	# installations. To use `simple` instead, add this to your `~/.extra` file:
 	# `git config --global push.default simple`. See http://git.io/mMah-w.
-	default = matching
+	default = current
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 
@@ -208,3 +208,5 @@
 
 [format]
   pretty = format:%C(auto,yellow)%h|%C(auto,magenta)% G? %C(auto,blue)|%>(12,trunc)%ad %C(auto,green)|%<(11,trunc)%aN| %C(auto,reset)%s%C(auto,red)% gD% D
+[grep]
+	lineNumber = true
