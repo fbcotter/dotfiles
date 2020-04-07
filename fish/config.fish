@@ -17,7 +17,7 @@ set -g theme_display_user yes
 set -g theme_hide_hostname no
 
 # Some aliases/environment variables
-eval (dircolors /home/fergal/repos/seebi/dircolors-solarized/dircolors.256dark | head -n 1 | sed 's/^LS_COLORS=/set -x LS_COLORS /;s/;$//')
+eval (dircolors $HOME/.dir_colors/dircolors | head -n 1 | sed 's/^LS_COLORS=/set -x LS_COLORS /;s/;$//')
 source $HOME/.config/fish/alias_vars.fish
 
 function pycscope

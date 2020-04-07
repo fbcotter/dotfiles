@@ -208,3 +208,5 @@
 
 [format]
   pretty = format:%C(auto,yellow)%h|%C(auto,magenta)% G? %C(auto,blue)|%>(12,trunc)%ad %C(auto,green)|%<(11,trunc)%aN| %C(auto,reset)%s%C(auto,red)% gD% D
+[grep]
+	lineNumber = true

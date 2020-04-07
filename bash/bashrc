@@ -89,5 +89,5 @@ export BLOCKSIZE=1k
 #   ------------------------------------------------------------
 export CLICOLOR=1
 #export LSCOLORS=ExFxBxDxCxegedabagacad
-eval $(dircolors ~/.dircolors)
 export TERM=xterm-256color
+eval `dircolors $HOME/.dir_colors/dircolors`
