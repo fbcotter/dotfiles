@@ -56,8 +56,7 @@ let g:python_highlight_all=1
 set t_Co=256
 let colors_env=$LC_COLORS
 colorscheme solarized
-" set background=dark
-set background=light
+set background=dark
 hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
 if colors_env == 'dark'
     set background=dark
@@ -98,6 +97,12 @@ let g:vimtex_view_general_options_latexmk = '--unique'
  let g:bookmark_save_per_working_dir = 1
  let g:bookmark_auto_save = 1
  let g:bookmark_center = 1
+ let g:ctrlp_max_files=0
+ let g:ctrlp_custom_ignore = {
+    \ 'dir':  '[\/]\.(git|hg|svn)$',
+    \ 'file': '\.(exe|so|dll|DS_Store)$',
+    \ 'build': 'bazel-out$\|node_modules$',
+    \ }
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  """"""""""""""""""""" Some airline settings """""""""""""""""""""""""""""
  let g:airline#extensions#tabline#enabled = 1
@@ -141,8 +146,14 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
   " """"""""""""""""""""" Some ALE Settings """""""""""""""""""""""""""""""""
   let g:ale_linters = {
-  \   'python': ['pylint', 'flake8'],
+  \   'python': ['pylint', 'flake8', 'mypy'],
   \}
+  let g:ale_python_mypy_executable= 'mypy'
+  let g:ale_python_mypy_options = '--config-file $HOME/mypy.ini'
+  let g:ale_python_pylint_executable= 'py_lint_pylint'
+  let g:ale_python_pylint_options = '--rcfile $HOME/pylintrc.txt'
+  let g:ale_python_flake8_executable= 'py_lint_flake8'
+  let g:ale_python_flake8_options = '--config $HOME/flake8.setup.cfg'
   " let g:ale_python_pylint_options = "--max-line-length=120 --select E,F,C9 --ignore=E226,E126"
   " let g:ale_python_pylint_options = "--max-line-length=120"
   let g:ale_sign_column_always = 0
@@ -173,7 +184,7 @@ let g:vimtex_view_general_options_latexmk = '--unique'
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   map <F3> :NERDTreeToggle<CR>
   map <F4> :NERDTreeFind<CR>
-  let g:NERDTreeWinSize = 50
+  let g:NERDTreeWinSize = 35
   let g:NERDTreeShowBookmarks=1
   let g:NERDTreeBookmarksSort=0
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -202,14 +213,18 @@ nnoremap <leader>r :CtrlPMRU<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
 
 " " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tags^=./.git/tags;
 let g:EasyGrepRecursive = 1
 let g:EasyGrepFilesToExclude=".git,*.swp,tags"
+nnoremap <leader>g :silent Ggrep! <cword><CR>
+autocmd QuickFixCmdPost *grep* cwindow
 
  " " Security
  " set modelines=0
 
  " " Show line numbers
- set number relativenumber
+ " set number relativenumber
+ set number
 
  " " Show current file
  nnoremap <leader>f :echo @%<CR>
@@ -254,6 +269,8 @@ let g:EasyGrepFilesToExclude=".git,*.swp,tags"
  if !exists(":Bd")
      command Bd bp | sp | bn | bd
  endif
+ set path+=**
+ " set wildmenu
 
  " " Rendering
  set ttyfast
@@ -303,3 +320,4 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+let g:solarized_termcolors=256

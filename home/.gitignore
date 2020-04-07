@@ -96,3 +96,9 @@ debug_dynamics.yml
 debug_dynamics_sim.yml
 debug_model.yml
 *.ipynb
+
+# Some latex things
+*.aux
+*.fls
+*.log
+*.fdb_latexmk
