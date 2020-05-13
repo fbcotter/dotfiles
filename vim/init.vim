@@ -327,4 +327,3 @@ let g:solarized_termcolors=256
 " Copy current file name to clipboard
 nmap ,cs :let @*=expand("%")<CR>
 nmap ,cl :let @*=expand("%:p")<CR>
-

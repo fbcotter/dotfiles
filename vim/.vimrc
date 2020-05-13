@@ -54,7 +54,7 @@ let g:python_highlight_all=1
 set t_Co=256
 let colors_env=$LC_COLORS
 colorscheme solarized
-set background=light
+set background=dark
 hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
 if colors_env == 'light'
     set background=light

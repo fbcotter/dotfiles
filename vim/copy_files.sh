@@ -30,8 +30,11 @@ mkdir -p ~/.config/nvim
 makesymlink $MYDIR/init.vim $HOME/.config/nvim/init.vim
 
 # Download vim-plug for neovim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [ ! -d $HOME/.config/nvim/plugged ]; then
+    echo "Downloading vim-plug for neovim"
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # Download vundle for vim
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
@@ -45,11 +48,14 @@ makesymlink $MYDIR/cscope.vim $HOME/.vim/cscope.vim
 
 # Copy ftplugin files
 mkdir -p ~/.vim/ftplugin
-makesymlink $MYDIR/ftplugin/python.vim $HOME/.vim/ftplugin/python.vim
-makesymlink $MYDIR/ftplugin/tex.vim $HOME/.vim/ftplugin/tex.vim
-makesymlink $MYDIR/ftplugin/cpp.vim $HOME/.vim/ftplugin/cpp.vim
-makesymlink $MYDIR/ftplugin/markdown.vim $HOME/.vim/ftplugin/markdown.vim
-makesymlink $MYDIR/ftplugin/rst.vim $HOME/.vim/ftplugin/rst.vim
-makesymlink $MYDIR/ftplugin/json.vim $HOME/.vim/ftplugin/json.vim
-mkdir -p ~/.config/nvim/after
-ln -s ~/.vim/ftplugin ~/.config/nvim/after/ftplugin
+for ftplugin in {$HOME/.vim/ftplugin,$HOME/.config/nvim/after/ftplugin}
+do
+    mkdir -p $ftplugin;
+    makesymlink $MYDIR/ftplugin/python.vim $ftplugin/python.vim;
+    makesymlink $MYDIR/ftplugin/tex.vim $ftplugin/tex.vim;
+    makesymlink $MYDIR/ftplugin/cpp.vim $ftplugin/cpp.vim;
+    makesymlink $MYDIR/ftplugin/markdown.vim $ftplugin/markdown.vim;
+    makesymlink $MYDIR/ftplugin/rst.vim $ftplugin/rst.vim;
+    makesymlink $MYDIR/ftplugin/json.vim $ftplugin/json.vim;
+done;
+unset ftplugin;
