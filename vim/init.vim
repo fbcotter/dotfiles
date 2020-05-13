@@ -39,6 +39,7 @@ Plug 'skielbasa/vim-material-monokai'
 Plug 'ayu-theme/ayu-vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'lervag/vimtex'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Final line of plugins
 call plug#end()
@@ -58,8 +59,9 @@ let colors_env=$LC_COLORS
 colorscheme solarized
 set background=dark
 hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
-if colors_env == 'dark'
-    set background=dark
+if colors_env == 'light'
+  set background=light
+  colorscheme PaperColor
 endif
 
  hi TagBarSignature ctermfg=Gray
@@ -321,3 +323,8 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 let g:solarized_termcolors=256
+
+" Copy current file name to clipboard
+nmap ,cs :let @*=expand("%")<CR>
+nmap ,cl :let @*=expand("%:p")<CR>
+
