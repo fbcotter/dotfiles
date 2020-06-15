@@ -77,6 +77,8 @@
 	}; f"
 	ctags = !.git/hooks/ctags
 
+	recent-branches = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
@@ -198,15 +200,15 @@
 [credential]
 	helper = cache --timeout=3600
 [filter "lfs"]
-    process = git-lfs filter-process --skip
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge --skip -- %f
 
 [log]
-  date = relative
+	date = relative
 
 [format]
-  pretty = format:%C(auto,yellow)%h|%C(auto,magenta)% G? %C(auto,blue)|%>(12,trunc)%ad %C(auto,green)|%<(11,trunc)%aN| %C(auto,reset)%s%C(auto,red)% gD% D
+	pretty = format:%C(auto,yellow)%h|%C(auto,magenta)% G? %C(auto,blue)|%>(12,trunc)%ad %C(auto,green)|%<(11,trunc)%aN| %C(auto,reset)%s%C(auto,red)% gD% D
 [grep]
 	lineNumber = true
