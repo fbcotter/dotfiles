@@ -1,2 +1,0 @@
-export PATH="$HOME/bin/:$PATH"
-export SHELL="$(which fish)"

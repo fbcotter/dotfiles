@@ -1,9 +1,0 @@
-# Load the bashrc file for settings
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
-fi
-
-if [ "$LC_SSH_LOGIN" = "1" ]; then
-    cd /scratch/fbc23
-    export LC_SSH_LOGIN=0
-fi;
