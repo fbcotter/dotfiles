@@ -62,7 +62,7 @@ let g:python_highlight_all=1
 
 set t_Co=256
 let colors_env=$LC_COLORS
-colorscheme solarized
+colorscheme material-monokai
 set background=dark
 hi MatchParen cterm=bold ctermfg=Magenta ctermbg=114
 if colors_env == 'light'
@@ -229,12 +229,14 @@ nnoremap <C-k> :lprev<CR>
 let g:ale_linters = {
 \   'python': ['pylint', 'flake8', 'mypy'],
 \}
-let g:ale_python_mypy_executable= 'mypy'
-let g:ale_python_mypy_options = '--config-file $HOME/mypy.ini'
-let g:ale_python_pylint_executable= 'py_lint_pylint'
-let g:ale_python_pylint_options = '--rcfile $HOME/pylintrc.txt'
-let g:ale_python_flake8_executable= 'py_lint_flake8'
-let g:ale_python_flake8_options = '--config $HOME/flake8.setup.cfg'
+let g:ale_python_mypy_executable = '/home/fergal/WayveCode/bzl-build/bin/build_support/python/flake8'
+let g:ale_python_mypy_options = '--config-file /home/fergal/mypy.ini'
+let g:ale_python_pylint_executable= '/home/fergal/WayveCode/bzl-build/bin/build_support/python/py_lint_pylint'
+let g:ale_python_pylint_options = '--rcfile /home/fergal/pylintrc.conf'
+let g:ale_python_flake8_executable= '/home/fergal/WayveCode/bzl-build/bin/build_support/python/py_lint_flake8'
+let g:ale_python_flake8_options = '--config /home/fergal/flake8.setup.cfg'
+let g:ale_python_black_executable = '/home/fergal/WayveCode/bzl-build/bin/tools/blackfmt'
+let g:ale_python_black_options = '--config /home/fergal/pyproject.toml'
 " let g:ale_python_pylint_options = "--max-line-length=120 --select E,F,C9 --ignore=E226,E126"
 " let g:ale_python_pylint_options = "--max-line-length=120"
 let g:ale_sign_column_always = 0
@@ -242,15 +244,6 @@ let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "!"
 let g:ale_sign_style_error = ":("
 let g:ale_sign_style_warning = ":/"
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""" Some TagBar Settings """"""""""""""""""""""""""""
-nmap <F9> :TagbarToggle<CR>
-let g:tagbar_width = 40
-let g:tagbar_sort = 0
-hi TagBarSignature ctermfg=Gray
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""" Some Nerdcommenter settings"""""""""""""""""""""""
