@@ -2,6 +2,9 @@
 " Don't try to be vi compatible
 set nocompatible
 
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '/home/fergal/.pyenv/versions/nvim/bin/python3.8'
+
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
@@ -31,7 +34,7 @@ Plug 'dense-analysis/ale'
 " Comment zones of text
 Plug 'scrooloose/nerdcommenter'    
 " See :help Bookmarks, useful for jumping around in buffers
-Plug 'MattesGroeger/vim-bookmarks' 
+" Plug 'MattesGroeger/vim-bookmarks' 
 " Bottom and top of editor
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -45,26 +48,55 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
 " Python syntax highlighting for vim
 Plug 'hdima/python-syntax'
-" Do black formatting hello for
-Plug 'smbl64/vim-black-macchiato'
 " Python indenting for functions
 Plug 'Vimjas/vim-python-pep8-indent'
 " Delete all but current buffer with :BufOnly
 Plug 'vim-scripts/BufOnly.vim'
 " Autocompletion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Code suggestions. See :help deoplete-options
-Plug 'deoplete-plugins/deoplete-jedi'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" " Code suggestions. See :help deoplete-options
+" Plug 'deoplete-plugins/dencode_str_to_uint8eoplete-jedi'
+Plug 'sindrets/diffview.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
+Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim'
 
 
 " Final line of plugins
 call plug#end()
 
-let g:loaded_python_provider = 0
-let g:python3_host_prod = '/home/fergal/.pyenv/versions/neovim/bin/python3'
+lua << EOF
+require("CopilotChat").setup {
+  -- See Configuration section for options
+  layout = {
+    position = "right",
+    ratio = 0.4,
+  },
+  keys = {
+    { "<leader>zc", ":CopilotChat<CR>", mode = "n", desc = "Chat with Copilot" },
+    { "<leader>ze", ":CopilotChatExplain<CR>", mode = "v", desc = "Explain Code" }, 
+    { "<leader>zw", ":CopilotChatReview<CR>", mode = "v", desc = "Review Code" }, 
+    { "<leader>zf", ":CopilotChatFix<CR>", mode = "v", desc = "Fix Code" }, 
+    { "<leader>zo", ":CopilotChatOptimize<CR>", mode = "v", desc = "Optimize Code" }, 
+    { "<leader>zd", ":CopilotChatDocs<CR>", mode = "v", desc = "Generate Docs" }, 
+    { "<leader>zt", ":CopilotChatTests<CR>", mode = "v", desc = "Generate Tests" }, 
+  }
+}
+EOF
+
+nnoremap <leader>zc :CopilotChat<CR>
+vnoremap <leader>ze :CopilotChatExplain<CR>
+vnoremap <leader>zw :CopilotChatReview<CR>
+vnoremap <leader>zf :CopilotChatFix<CR>
+vnoremap <leader>zo :CopilotChatOptimize<CR>
+vnoremap <leader>zd :CopilotChatDocs<CR>
+vnoremap <leader>zt :CopilotChatTests<CR>
 
 " Set vim man width to 80
 let g:man_width = 120
+set splitright
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -73,9 +105,9 @@ set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
 
 " Deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('max_menu_width', 100)
-call deoplete#custom#option('max_abbr_width', 20)
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('max_menu_width', 100)
+" call deoplete#custom#option('max_abbr_width', 20)
 
 """""""""""""""""""""""" Colours and Appearance """"""""""""""""""""""""
 " Turn on syntax highlighting
@@ -85,14 +117,14 @@ set t_Co=256
 let colors_env=$LC_COLORS
 colorscheme material-monokai
 set background=dark
-" colorscheme PaperColor 
+" colorscheme catppuccin-latte " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 " set background=light
 
 """"""""""""""""""""""""" Misc """""""""""""""""""""""""""""""""
 set tags^=./.git/tags;
 set visualbell  " No sound on errors
 set encoding=utf-8
-set termencoding=utf-8
+" set termencoding=utf-8
 set wrap
 set textwidth=120
 set formatoptions=tcqrn1
@@ -233,14 +265,20 @@ nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>r :CtrlPMRU<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
-let g:ctrlp_max_depth = 10
+let g:ctrlp_max_depth = 15
 let g:ctrlp_max_files = 20000
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 let g:ctrlp_custom_ignore = {
 \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-\ 'other_dir':  '(data|work_dir)$',
+\ 'other_dir':  '(data|work_dir|bzl-build|build_support|foxglove)$',
 \ 'file': '\v\.(exe|so|dll)$',
 \ }
 
-" " """""""""""""""""""""""""" Some black-macchiato settings """""""""""""""""""""""""""
-autocmd FileType python xmap <buffer> <Leader>g <plug>(BlackMacchiatoSelection)
-autocmd FileType python nmap <buffer> <Leader>g <plug>(BlackMacchiatoCurrentLine)
+" """""""""""""""""""""""""""" Some copilot settings """""""""""""""""""""""""""""""""""
+imap <silent> <C-y> <Plug>(copilot-dismiss)
+imap <silent> <C-j> <Plug>(copilot-next)
+" imap <silent> <C-k> <Plug>(copilot-previous)
+imap <silent> <C-b> <Plug>(copilot-suggest)
